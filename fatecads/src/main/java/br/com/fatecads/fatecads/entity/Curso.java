@@ -1,4 +1,5 @@
 package br.com.fatecads.fatecads.entity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,27 +15,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Aluno {
+public class Curso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idAluno;
+    private Integer idCurso;
 
     @Column(nullable = false, length = 40)
-    private String nomeAluno;
+    private String nome;
 
-    @Column(length = 40)
-    private String emailAluno;
+    @Column(nullable = false, length = 40)
+    private String periodo;
 
-    @Column(nullable = false, length = 11)
-    private String telefoneAluno;
+    @Column(nullable = false, length = 40)
+    private Integer cargaHoraria;
 
-    @Column(nullable = false, length = 50)
-    private String enderecoAluno;
 
-    @Column(nullable = false, length = 11)
-    private String cpfAluno;
-
-    @Column(nullable = false)
-    private String raAluno;
 }
