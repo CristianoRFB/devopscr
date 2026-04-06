@@ -4,10 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema FatecADS</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/index.css">
 </head>
-<body>
-    <h1>Bem-vindo ao Sistema FatecADS</h1>
-    <a href="/alunos/listar">Ver Alunos</a>
-    <a href="/alunos/criar">Cadastrar Aluno</a>
+<body class="page-shell">
+    <main class="page page-home">
+        <section class="hero-panel">
+            <p class="eyebrow">FATECADS // SISTEMA ACADEMICO</p>
+            <h1 class="hero-title">Bem-vindo ao Sistema FatecADS</h1>
+            <p class="hero-copy">
+                Gerencie alunos com uma interface direta, escura e objetiva.
+            </p>
+        </section>
+
+        <section class="nav-grid">
+            <a class="feature-card" href="/alunos/listar">
+                <span class="feature-index">01</span>
+                <strong>Ver Alunos</strong>
+                <span>Consulte os registros cadastrados.</span>
+            </a>
+
+            <a class="feature-card accent-card" href="/alunos/criar">
+                <span class="feature-index">02</span>
+                <strong>Cadastrar Aluno</strong>
+                <span>Abra o formulario para um novo cadastro.</span>
+            </a>
+        </section>
+
+        <section class="nav-grid">
+            <a class="feature-card" href="/cursos/listar">
+                <span class="feature-index">03</span>
+                <strong>Ver Cursos</strong>
+                <span>Consulte os registros cadastrados.</span>
+            </a>
+
+            <a class="feature-card accent-card" href="/cursos/criar">
+                <span class="feature-index">04</span>
+                <strong>Cadastrar Curso</strong>
+                <span>Abra o formulario para um novo cadastro.</span>
+            </a>
+        </section>
+    </main>
 </body>
 </html>
+

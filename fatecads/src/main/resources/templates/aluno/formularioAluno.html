@@ -4,29 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Alunos</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
 </head>
-<body>
-    <h1>Cadastrar Alunos</h1>
-    <form method="post" th:action="@{/alunos/salvar}" th:object="${aluno}">
-        <label for="nomeAluno">Nome:</label>
-        <input type="text" id="nomeAluno" th:field="*{nomeAluno}" required><br><br>
+<body class="page-shell">
+    <main class="page page-form">
+        <section class="section-header">
+            <p class="eyebrow">CADASTRO //</p>
+            <h1>Cadastrar Alunos</h1>
+            <p class="section-copy">Preencha os dados abaixo para inserir um novo aluno no sistema.</p>
+        </section>
 
-        <label for="emailAluno">Email:</label>
-        <input type="email" id="emailAluno" th:field="*{emailAluno}"><br><br>
+        <Form class="brutal-form" method="post" th:action="@{/alunos/salvar}" th:object="${aluno}">
+            <div class="form-grid">
+                <input type="hidden" th:field="*{idAluno}">
+                <label class="field" for="nomeAluno">
+                    <span>Nome</span>
+                    <input type="text" id="nomeAluno" th:field="*{nomeAluno}" required>
+                </label>
 
-        <label for="telefoneAluno">Telefone:</label>
-        <input type="tel" id="telefoneAluno" th:field="*{telefoneAluno}" required><br><br>
+                <label class="field" for="emailAluno">
+                    <span>Email</span>
+                    <input type="email" id="emailAluno" th:field="*{emailAluno}">
+                </label>
 
-        <label for="enderecoAluno">Endereço:</label>
-        <input type="text" id="enderecoAluno" th:field="*{enderecoAluno}" required><br><br>
+                <label class="field" for="telefoneAluno">
+                    <span>Telefone</span>
+                    <input type="tel" id="telefoneAluno" th:field="*{telefoneAluno}" required>
+                </label>
 
-        <label for="cpfAluno">CPF:</label>
-        <input type="text" id="cpfAluno" th:field="*{cpfAluno}" required><br><br>
+                <label class="field field-full" for="enderecoAluno">
+                    <span>Endereco</span>
+                    <input type="text" id="enderecoAluno" th:field="*{enderecoAluno}" required>
+                </label>
 
-        <label for="raAluno">RA:</label>
-        <input type="text" id="raAluno" th:field="*{raAluno}" required><br><br>
+                <label class="field" for="cpfAluno">
+                    <span>CPF</span>
+                    <input type="text" id="cpfAluno" th:field="*{cpfAluno}" required>
+                </label>
 
-        <button type="submit">Cadastrar</button>
-    </form>     
+                <label class="field" for="raAluno">
+                    <span>RA</span>
+                    <input type="text" id="raAluno" th:field="*{raAluno}" required>
+                </label>
+            </div>
+
+            <div class="actions-row">
+                <button class="button-primary" type="submit">Cadastrar</button>
+                <a class="button-secondary" href="/alunos/listar">Voltar para a lista</a>
+            </div>
+        </Form>
+    </main>
 </body>
 </html>
