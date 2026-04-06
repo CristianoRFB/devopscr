@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Cursos</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
+</head>
+<body class="page-shell">
+    <main class="page page-form">
+        <section class="section-header">
+            <p class="eyebrow">CADASTRO //</p>
+            <h1>Cadastrar Cursos</h1>
+            <p class="section-copy">Preencha os dados abaixo para inserir um novo curso no sistema.</p>
+        </section>
+
+        <form class="brutal-form" method="post" th:action="@{/cursos/salvar}" th:object="${curso}">
+            <div class="form-grid">
+                <input type="hidden" th:field="*{idCurso}">
+                <label class="field" for="nome">
+                    <span>Nome</span>
+                    <input type="text" id="nome" th:field="*{nome}" required>
+                </label>
+
+                <label class="field" for="periodo">
+                    <span>Periodo</span>
+                    <input type="text" id="periodo" th:field="*{periodo}" required>
+                </label>
+
+                <label class="field field-full" for="cargaHoraria">
+                    <span>Carga Horaria</span>
+                    <input type="number" id="cargaHoraria" th:field="*{cargaHoraria}" required>
+                </label>
+            </div>
+
+            <div class="actions-row">
+                <button class="button-primary" type="submit">Cadastrar</button>
+                <a class="button-secondary" href="/cursos/listar">Voltar para a lista</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

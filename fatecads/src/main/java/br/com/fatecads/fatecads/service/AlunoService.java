@@ -29,4 +29,17 @@ public class AlunoService {
         // Lógica para buscar um aluno por ID no banco de dados
         return alunoRepository.findById(id).orElse(null);
     }
+
+    public void deleteById(Integer id) {
+        // Lógica para deletar um aluno por ID no banco de dados
+        alunoRepository.deleteById(id);
+    }
+
+    public Aluno update(Aluno aluno) {
+        // Lógica para atualizar um aluno no banco de dados
+        if (aluno.getIdAluno() != null && alunoRepository.existsById(aluno.getIdAluno())) {
+            return alunoRepository.save(aluno);
+        }
+        return null; // Retorna null se o aluno não existir
+    }
 }

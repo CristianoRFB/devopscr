@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Alunos</title>
+    <title>Lista de Cursos</title>
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/pages/listar-alunos.css">
 </head>
@@ -12,10 +12,10 @@
         <section class="section-header section-header-split">
             <div>
                 <p class="eyebrow">PAINEL //</p>
-                <h1>Lista de Alunos</h1>
+                <h1>Lista de Cursos</h1>
                 <p class="section-copy">Visualize, edite e remova registros existentes sem alterar o fluxo do sistema.</p>
             </div>
-            <a class="button-primary" href="/alunos/criar">Criar novo Aluno</a>
+            <a class="button-primary" href="/cursos/criar">Criar novo Curso</a>
         </section>
 
         <section class="table-panel">
@@ -24,27 +24,21 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Endereco</th>
-                        <th>CPF</th>
-                        <th>RA</th>
+                        <th>Periodo</th>
+                        <th>Carga Horaria</th>
                         <th>Acoes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="aluno : ${alunos}">
-                        <td th:text="${aluno.idAluno}"></td>
-                        <td th:text="${aluno.nomeAluno}"></td>
-                        <td th:text="${aluno.emailAluno}"></td>
-                        <td th:text="${aluno.telefoneAluno}"></td>
-                        <td th:text="${aluno.enderecoAluno}"></td>
-                        <td th:text="${aluno.cpfAluno}"></td>
-                        <td th:text="${aluno.raAluno}"></td>
+                    <tr th:each="curso : ${cursos}">
+                        <td th:text="${curso.idCurso}"></td>
+                        <td th:text="${curso.nome}"></td>
+                        <td th:text="${curso.periodo}"></td>
+                        <td th:text="${curso.cargaHoraria}"></td>
                         <td>
                             <div class="table-actions">
-                                <a class="table-action" th:href="@{/alunos/editar/{id}(id=${aluno.idAluno})}">Editar</a>
-                                <a class="table-action danger" th:href="@{/alunos/excluir/{id}(id=${aluno.idAluno})}" onclick="return confirm('Tem certeza que deseja excluir este aluno?');">Excluir</a>
+                                <a class="table-action" th:href="@{/cursos/editar/{id}(id=${curso.idCurso})}">Editar</a>
+                                <a class="table-action danger" th:href="@{/cursos/excluir/{id}(id=${curso.idCurso})}" onclick="return confirm('Tem certeza que deseja excluir este curso?');">Excluir</a>
                             </div>
                         </td>
                     </tr>
