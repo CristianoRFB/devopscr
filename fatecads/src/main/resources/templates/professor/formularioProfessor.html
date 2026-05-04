@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Professores</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
+</head>
+<body class="page-shell">
+    <main class="page page-form">
+        <section class="section-header">
+            <p class="eyebrow">CADASTRO //</p>
+            <h1>Cadastrar Professores</h1>
+            <p class="section-copy">Preencha os dados abaixo para inserir um novo professor no sistema.</p>
+        </section>
+
+        <form class="brutal-form" method="post" th:action="@{/professores/salvar}" th:object="${professor}">
+            <div class="form-grid">
+                <input type="hidden" th:field="*{idProfessor}">
+                <label class="field" for="nomeProfessor">
+                    <span>Nome</span>
+                    <input type="text" id="nomeProfessor" th:field="*{nome}" required>
+                </label>
+
+                <label class="field" for="telefoneProfessor">
+                    <span>Telefone</span>
+                    <input type="tel" id="telefoneProfessor" th:field="*{telefone}" required>
+                </label>
+
+                <label class="field" for="graduacaoProfessor">
+                    <span>Graduacao</span>
+                    <input type="text" id="graduacaoProfessor" th:field="*{graduacao}" required>
+                </label>
+
+                <label class="field field-full" for="rmProfessor">
+                    <span>RM</span>
+                    <input type="text" id="rmProfessor" th:field="*{rm}" required>
+                </label>
+            </div>
+
+            <div class="actions-row">
+                <button class="button-primary" type="submit">Cadastrar</button>
+                <a class="button-secondary" href="/professores/listar">Voltar para a lista</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

@@ -7,14 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.fatecads.fatecads.entity.Aluno;
 import br.com.fatecads.fatecads.service.AlunoService;
+import br.com.fatecads.fatecads.service.CursoService;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequestMapping("/alunos")
@@ -23,6 +21,9 @@ public class AlunoController {
     // Injeção de dependência do serviço de alunos
     @Autowired
     private AlunoService alunoService;
+
+    @Autowired
+    private CursoService cursoService;
 
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Aluno aluno) {
@@ -39,9 +40,11 @@ public class AlunoController {
     @GetMapping("/criar")
     public String criarForm(Model model) {
         model.addAttribute("aluno", new Aluno());
+
+        model.addAttribute("cursos", cursoService.findAll());
         return "aluno/formularioAluno";
     }
-    
+
     @GetMapping("/excluir/{id}")
     public String excluir(@PathVariable Integer id) {
         alunoService.deleteById(id);
@@ -53,6 +56,7 @@ public class AlunoController {
         Aluno aluno = alunoService.findById(id);
         if (aluno != null) {
             model.addAttribute("aluno", aluno);
+            model.addAttribute("cursos", cursoService.findAll());
             return "aluno/formularioAluno";
         }
         return "redirect:/alunos/listar"; // Redireciona se o aluno não for encontrado

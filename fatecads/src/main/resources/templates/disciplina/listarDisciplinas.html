@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Disciplinas</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/listar-alunos.css">
+</head>
+<body class="page-shell">
+    <main class="page page-list">
+        <section class="section-header section-header-split">
+            <div>
+                <p class="eyebrow">PAINEL //</p>
+                <h1>Lista de Disciplinas</h1>
+                <p class="section-copy">Visualize, edite e remova registros existentes sem alterar o fluxo do sistema.</p>
+            </div>
+            <a class="button-primary" href="/disciplinas/criar">Criar nova Disciplina</a>
+        </section>
+
+        <section class="table-panel">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Sigla</th>
+                        <th>Carga Horaria</th>
+                        <th>Acoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="disciplina : ${disciplinas}">
+                        <td th:text="${disciplina.idDisciplina}"></td>
+                        <td th:text="${disciplina.nome}"></td>
+                        <td th:text="${disciplina.sigla}"></td>
+                        <td th:text="${disciplina.cargaHoraria}"></td>
+                        <td>
+                            <div class="table-actions">
+                                <a class="table-action" th:href="@{/disciplinas/editar/{id}(id=${disciplina.idDisciplina})}">Editar</a>
+                                <a class="table-action danger" th:href="@{/disciplinas/excluir/{id}(id=${disciplina.idDisciplina})}" onclick="return confirm('Tem certeza que deseja excluir esta disciplina?');">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

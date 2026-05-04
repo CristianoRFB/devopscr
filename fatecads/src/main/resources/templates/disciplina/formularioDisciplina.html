@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Disciplinas</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
+</head>
+<body class="page-shell">
+    <main class="page page-form">
+        <section class="section-header">
+            <p class="eyebrow">CADASTRO //</p>
+            <h1>Cadastrar Disciplinas</h1>
+            <p class="section-copy">Preencha os dados abaixo para inserir uma nova disciplina no sistema.</p>
+        </section>
+
+        <form class="brutal-form" method="post" th:action="@{/disciplinas/salvar}" th:object="${disciplina}">
+            <div class="form-grid">
+                <input type="hidden" th:field="*{idDisciplina}">
+                <label class="field" for="nomeDisciplina">
+                    <span>Nome</span>
+                    <input type="text" id="nomeDisciplina" th:field="*{nome}" required>
+                </label>
+
+                <label class="field" for="siglaDisciplina">
+                    <span>Sigla</span>
+                    <input type="text" id="siglaDisciplina" th:field="*{sigla}" required>
+                </label>
+
+                <label class="field field-full" for="cargaHorariaDisciplina">
+                    <span>Carga Horaria</span>
+                    <input type="text" id="cargaHorariaDisciplina" th:field="*{cargaHoraria}" required>
+                </label>
+            </div>
+
+            <div class="actions-row">
+                <button class="button-primary" type="submit">Cadastrar</button>
+                <a class="button-secondary" href="/disciplinas/listar">Voltar para a lista</a>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

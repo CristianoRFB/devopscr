@@ -47,7 +47,8 @@ a {
 }
 
 button,
-input {
+input,
+section {
     font: inherit;
 }
 
@@ -146,7 +147,7 @@ input {
     box-shadow: 10px 10px 0 #000;
 }
 
-input {
+input, select {
     width: 100%;
     min-height: 54px;
     padding: 14px 16px;

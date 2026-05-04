@@ -20,25 +20,21 @@ public class ProfessorService {
     }
 
     public List<Professor> findAll() {
-        // Lógica para buscar todos os Professors no banco de dados
         return professorRepository.findAll();
     }
 
     public Professor findById(Integer id) {
-        // Lógica para buscar um Professor por ID no banco de dados
         return professorRepository.findById(id).orElse(null);
     }
 
     public void deleteById(Integer id) {
-        // Lógica para deletar um Professor por ID no banco de dados
         professorRepository.deleteById(id);
     }
 
     public Professor update(Professor professor) {
-        // Lógica para atualizar um Professor no banco de dados
         if (professor.getIdProfessor() != null && professorRepository.existsById(professor.getIdProfessor())) {
             return professorRepository.save(professor);
         }
-        return null; // Retorna null se o Professor não existir
+        return null;
     }
 }

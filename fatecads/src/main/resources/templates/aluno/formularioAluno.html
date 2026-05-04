@@ -47,6 +47,21 @@
                     <span>RA</span>
                     <input type="text" id="raAluno" th:field="*{raAluno}" required>
                 </label>
+
+                <div>
+                    <label for="cursoAluno">
+                        <span>Curso</span>
+                    </label>
+                    <select class="field" th:field="*{curso}">
+                        <option value="" disabled selected>Selecione o curso</option>
+                        <option 
+                            th:each="curso : ${cursos}" 
+                            th:value="${curso.idCurso}"
+                            th:text="${curso.nome}">
+                        </option>
+                    </select>
+                </div>
+
             </div>
 
             <div class="actions-row">
