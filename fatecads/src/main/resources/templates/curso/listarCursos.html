@@ -26,6 +26,7 @@
                         <th>Nome</th>
                         <th>Periodo</th>
                         <th>Carga Horaria</th>
+                        <th>Disciplina</th>
                         <th>Acoes</th>
                     </tr>
                 </thead>
@@ -35,7 +36,7 @@
                         <td th:text="${curso.nome}"></td>
                         <td th:text="${curso.periodo}"></td>
                         <td th:text="${curso.cargaHoraria}"></td>
-                        <td>
+                        <td th:text="${curso.disciplina.nome}">
                             <div class="table-actions">
                                 <a class="table-action" th:href="@{/cursos/editar/{id}(id=${curso.idCurso})}">Editar</a>
                                 <a class="table-action danger" th:href="@{/cursos/excluir/{id}(id=${curso.idCurso})}" onclick="return confirm('Tem certeza que deseja excluir este curso?');">Excluir</a>

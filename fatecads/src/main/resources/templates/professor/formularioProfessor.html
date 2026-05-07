@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
 </head>
+
 <body class="page-shell">
     <main class="page page-form">
         <section class="section-header">
@@ -37,6 +39,18 @@
                     <span>RM</span>
                     <input type="text" id="rmProfessor" th:field="*{rm}" required>
                 </label>
+
+                <div>
+                    <label for="disciplina">
+                        <span>Disciplina</span>
+                    </label>
+                    <select class="field" th:field="*{disciplina}">
+                        <option value="" disabled selected>Selecione a disciplina</option>
+                        <option th:each="disciplina : ${disciplinas}" th:value="${disciplina.idDisciplina}"
+                            th:text="${disciplina.nome}">
+                        </option>
+                    </select>
+                </div>
             </div>
 
             <div class="actions-row">
@@ -46,4 +60,5 @@
         </form>
     </main>
 </body>
+
 </html>
