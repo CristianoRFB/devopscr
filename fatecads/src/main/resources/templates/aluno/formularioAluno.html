@@ -52,7 +52,7 @@
                     <label for="cursoAluno">
                         <span>Curso</span>
                     </label>
-                    <select class="field" th:field="*{curso}">
+                    <select class="field" id="cursoAluno" th:field="*{curso}" required>
                         <option value="" disabled selected>Selecione o curso</option>
                         <option 
                             th:each="curso : ${cursos}" 

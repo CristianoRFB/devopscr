@@ -26,6 +26,8 @@
                         <th>Nome</th>
                         <th>Sigla</th>
                         <th>Carga Horaria</th>
+                        <th>Professor</th>
+                        <th>Curso</th>
                         <th>Acoes</th>
                     </tr>
                 </thead>
@@ -35,6 +37,8 @@
                         <td th:text="${disciplina.nome}"></td>
                         <td th:text="${disciplina.sigla}"></td>
                         <td th:text="${disciplina.cargaHoraria}"></td>
+                        <td th:text="${disciplina.professor != null ? disciplina.professor.nome : '-'}"></td>
+                        <td th:text="${disciplina.curso != null ? disciplina.curso.nome : '-'}"></td>
                         <td>
                             <div class="table-actions">
                                 <a class="table-action" th:href="@{/disciplinas/editar/{id}(id=${disciplina.idDisciplina})}">Editar</a>

@@ -34,17 +34,6 @@
                     <span>Carga Horaria</span>
                     <input type="number" id="cargaHoraria" th:field="*{cargaHoraria}" required>
                 </label>
-
-                <div>
-                    <label for="disciplina">
-                        <span>Disciplina</span>
-                    </label>
-                    <select class="field" th:field="*{disciplina}">
-                        <option value="" disabled selected>Selecione a disciplina</option>
-                        <option th:each="disciplina : ${disciplinas}" th:value="${disciplina.idDisciplina}" th:text="${disciplina.nome}">
-                        </option>
-                    </select>
-                </div>
             </div>
 
             <div class="actions-row">

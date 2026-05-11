@@ -27,7 +27,6 @@
                         <th>Telefone</th>
                         <th>Graduacao</th>
                         <th>RM</th>
-                        <th>Disciplina</th>
                         <th>Acoes</th>
                     </tr>
                 </thead>
@@ -38,7 +37,6 @@
                         <td th:text="${professor.telefone}"></td>
                         <td th:text="${professor.graduacao}"></td>
                         <td th:text="${professor.rm}"></td>
-                        <td th:text="${professor.disciplina.nome}"></td>
                         <td>
                             <div class="table-actions">
                                 <a class="table-action" th:href="@{/professores/editar/{id}(id=${professor.idProfessor})}">Editar</a>

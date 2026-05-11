@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.fatecads.fatecads.entity.Professor;
-import br.com.fatecads.fatecads.service.DisciplinaService;
 import br.com.fatecads.fatecads.service.ProfessorService;
 
 @Controller
@@ -19,9 +18,6 @@ public class ProfessorController {
 
 	@Autowired
 	private ProfessorService professorService;
-
-    @Autowired
-    private DisciplinaService disciplinaService;
 
 	@PostMapping("/salvar")
 	public String salvar(@ModelAttribute Professor professor) {
@@ -38,7 +34,6 @@ public class ProfessorController {
 	@GetMapping("/criar")
 	public String criarForm(Model model) {
 		model.addAttribute("professor", new Professor());
-        model.addAttribute("disciplinas", disciplinaService.findAll());
 		return "professor/formularioProfessor";
 	}
 
@@ -53,7 +48,6 @@ public class ProfessorController {
 		Professor professor = professorService.findById(id);
 		if (professor != null) {
 			model.addAttribute("professor", professor);
-			model.addAttribute("disciplinas", disciplinaService.findAll());
 			return "professor/formularioProfessor";
 		}
 		return "redirect:/professores/listar";

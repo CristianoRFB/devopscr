@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Usuário</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
+</head>
+
+<body class="page-shell">
+    <main class="page page-form">
+        <section class="section-header">
+            <p class="eyebrow">CADASTRO //</p>
+            <h1>Cadastrar Usuário</h1>
+            <p class="section-copy">Preencha os dados abaixo para inserir um novo usuário no sistema.</p>
+        </section>
+
+        <form class="brutal-form" method="post" th:action="@{/usuarios/salvar}" th:object="${usuario}">
+            <div class="form-grid">
+                <input type="hidden" th:field="*{idUsuario}">
+                <label class="field" for="nomeUsuario">
+                    <span>Nome</span>
+                    <input type="text" id="nomeUsuario" th:field="*{nome}" required>
+                </label>
+
+                <label class="field" for="emailUsuario">
+                    <span>Email</span>
+                    <input type="email" id="emailUsuario" th:field="*{email}" required>
+                </label>
+
+                <label class="field" for="loginUsuario">
+                    <span>Login</span>
+                    <input type="text" id="loginUsuario" th:field="*{login}" required>
+                </label>
+
+                <label class="field" for="senhaUsuario">
+                    <span>Senha</span>
+                    <input type="password" id="senhaUsuario" th:field="*{senha}" required>
+                </label>
+
+                <label class="field field-full" for="roleUsuario">
+                    <span>Perfil</span>
+                    <input type="text" id="roleUsuario" th:field="*{role}" placeholder="ADMIN ou USUARIO" required>
+                </label>
+            </div>
+
+            <div class="actions-row">
+                <button class="button-primary" type="submit">Cadastrar</button>
+                <a class="button-secondary" href="/fatecads">Voltar para o início</a>
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>

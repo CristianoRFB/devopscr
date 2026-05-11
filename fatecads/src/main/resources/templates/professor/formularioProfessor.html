@@ -39,18 +39,6 @@
                     <span>RM</span>
                     <input type="text" id="rmProfessor" th:field="*{rm}" required>
                 </label>
-
-                <div>
-                    <label for="disciplina">
-                        <span>Disciplina</span>
-                    </label>
-                    <select class="field" th:field="*{disciplina}">
-                        <option value="" disabled selected>Selecione a disciplina</option>
-                        <option th:each="disciplina : ${disciplinas}" th:value="${disciplina.idDisciplina}"
-                            th:text="${disciplina.nome}">
-                        </option>
-                    </select>
-                </div>
             </div>
 
             <div class="actions-row">
