@@ -15,7 +15,8 @@
             <p class="section-copy">Preencha os dados abaixo para inserir um novo aluno no sistema.</p>
         </section>
 
-        <Form class="brutal-form" method="post" th:action="@{/alunos/salvar}" th:object="${aluno}">
+        <form class="brutal-form" method="post" th:action="@{/alunos/salvar}" th:object="${aluno}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="form-grid">
                 <input type="hidden" th:field="*{idAluno}">
                 <label class="field" for="nomeAluno">
@@ -53,7 +54,7 @@
                 <button class="button-primary" type="submit">Cadastrar</button>
                 <a class="button-secondary" href="/alunos/listar">Voltar para a lista</a>
             </div>
-        </Form>
+        </form>
     </main>
 </body>
 </html>

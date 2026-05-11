@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | FatecADS</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/auth.css">
+</head>
+<body class="page-shell">
+    <main class="page auth-page">
+        <section class="auth-panel">
+            <p class="eyebrow">NOVA CONTA //</p>
+            <h1>Cadastro</h1>
+            <p class="section-copy">Crie seu acesso com email e uma senha segura.</p>
+
+            <p class="alert error" th:if="${erro}" th:text="${erro}"></p>
+
+            <form class="auth-form" method="post" th:action="@{/cadastro}">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                <label class="field" for="nome">
+                    <span>Nome</span>
+                    <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" required autofocus>
+                </label>
+
+                <label class="field" for="email">
+                    <span>Email</span>
+                    <input type="email" id="email" name="email" autocomplete="email" maxlength="120" required>
+                </label>
+
+                <label class="field" for="senha">
+                    <span>Senha</span>
+                    <input type="password" id="senha" name="senha" autocomplete="new-password" minlength="8" required>
+                </label>
+
+                <label class="field" for="confirmarSenha">
+                    <span>Confirmar senha</span>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" autocomplete="new-password" minlength="8" required>
+                </label>
+
+                <button class="button-primary" type="submit">Criar conta</button>
+            </form>
+
+            <div class="auth-footer">
+                <span>Ja tem conta?</span>
+                <a class="button-secondary" href="/login">Entrar</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

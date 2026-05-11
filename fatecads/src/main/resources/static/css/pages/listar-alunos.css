@@ -1,6 +1,6 @@
 .page-list {
     display: grid;
-    gap: 28px;
+    gap: 24px;
 }
 
 .section-header-split {
@@ -13,22 +13,28 @@
 .table-panel {
     overflow-x: auto;
     padding: 0;
+    border-color: var(--line);
 }
 
 .table-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
+}
+
+.table-actions form {
+    margin: 0;
 }
 
 .table-action {
-    min-height: 42px;
+    min-height: 40px;
     padding: 0 14px;
-    font-size: 0.8rem;
+    font-size: 0.76rem;
 }
 
 .table-action.danger {
     background: var(--danger);
+    box-shadow: 0 12px 24px rgba(255, 95, 126, 0.18);
 }
 
 @media (max-width: 768px) {

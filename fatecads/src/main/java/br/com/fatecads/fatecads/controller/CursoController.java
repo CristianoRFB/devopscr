@@ -37,7 +37,7 @@ public class CursoController {
         return "curso/formularioCurso";
     }
 
-    @GetMapping("/excluir/{id}")
+    @PostMapping("/excluir/{id}")
     public String excluir(@PathVariable Integer id) {
         cursoService.deleteById(id);
         return "redirect:/cursos/listar";

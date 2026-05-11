@@ -11,9 +11,7 @@ import br.com.fatecads.fatecads.service.AlunoService;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -42,7 +40,7 @@ public class AlunoController {
         return "aluno/formularioAluno";
     }
     
-    @GetMapping("/excluir/{id}")
+    @PostMapping("/excluir/{id}")
     public String excluir(@PathVariable Integer id) {
         alunoService.deleteById(id);
         return "redirect:/alunos/listar";

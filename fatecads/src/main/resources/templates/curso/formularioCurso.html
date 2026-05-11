@@ -16,6 +16,7 @@
         </section>
 
         <form class="brutal-form" method="post" th:action="@{/cursos/salvar}" th:object="${curso}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="form-grid">
                 <input type="hidden" th:field="*{idCurso}">
                 <label class="field" for="nome">
