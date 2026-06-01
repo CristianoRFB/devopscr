@@ -24,6 +24,7 @@
         </section>
 
         <form class="brutal-form" method="post" th:action="@{/professores/salvar}" th:object="${professor}">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
             <div class="form-grid">
                 <input type="hidden" th:field="*{idProfessor}">
                 <label class="field" for="nomeProfessor">

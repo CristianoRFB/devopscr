@@ -46,6 +46,24 @@ div > select {
     margin-top: 28px;
 }
 
+.form-alert {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 3px solid var(--line);
+    font-weight: 600;
+}
+
+.form-alert-error {
+    background: rgba(120, 0, 0, 0.24);
+    color: var(--ink);
+}
+
+.form-hint {
+    margin: 18px 0 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
 @media (max-width: 768px) {
     .form-grid {
         grid-template-columns: 1fr;

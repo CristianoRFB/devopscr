@@ -49,6 +49,7 @@
             </a>
 
             <form class="feature-card accent-card logout-card" method="post" th:action="@{/logout}">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <span class="feature-index">04</span>
                 <strong>Encerrar Sessao</strong>
                 <span>Finalize o acesso autenticado com seguranca.</span>
