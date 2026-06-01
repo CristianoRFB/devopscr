@@ -12,6 +12,8 @@ import br.com.fatecads.fatecads.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 
+    private static final String BCRYPT_PREFIX = "$2";
+
     @Autowired
     private UsuarioRepository usuarioRepository;
 
@@ -19,7 +21,7 @@ public class UsuarioService {
     private PasswordEncoder passwordEncoder;
 
     public Usuario save(Usuario usuario) {
-        usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
+        usuario.setSenha(encodePasswordIfNeeded(usuario.getSenha()));
         return usuarioRepository.save(usuario);
     }
 
@@ -37,8 +39,37 @@ public class UsuarioService {
 
     public Usuario update(Usuario usuario) {
         if (usuario.getIdUsuario() != null && usuarioRepository.existsById(usuario.getIdUsuario())) {
+            usuario.setSenha(encodePasswordIfNeeded(usuario.getSenha()));
             return usuarioRepository.save(usuario);
         }
         return null;
+    }
+
+    public void updatePassword(Usuario usuario, String rawPassword) {
+        usuario.setSenha(passwordEncoder.encode(rawPassword));
+        usuarioRepository.save(usuario);
+    }
+
+    public boolean isPasswordStrong(String password) {
+        if (password == null || password.length() < 8) {
+            return false;
+        }
+
+        boolean hasUppercase = password.chars().anyMatch(Character::isUpperCase);
+        boolean hasLowercase = password.chars().anyMatch(Character::isLowerCase);
+        boolean hasDigit = password.chars().anyMatch(Character::isDigit);
+        boolean hasSpecialChar = password.chars().anyMatch(ch -> !Character.isLetterOrDigit(ch));
+
+        return hasUppercase && hasLowercase && hasDigit && hasSpecialChar;
+    }
+
+    private String encodePasswordIfNeeded(String password) {
+        if (password == null || password.isBlank()) {
+            return password;
+        }
+        if (password.startsWith(BCRYPT_PREFIX)) {
+            return password;
+        }
+        return passwordEncoder.encode(password);
     }
 }

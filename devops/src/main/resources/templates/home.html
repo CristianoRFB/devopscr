@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | FatecADS</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/index.css">
+</head>
+
+<body class="page-shell">
+    <main class="page page-home">
+        <nav class="top-nav">
+            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
+            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
+            <a class="nav-chip nav-chip-active" href="/home">Area autenticada</a>
+        </nav>
+
+        <section class="hero-panel">
+            <p class="eyebrow">AREA AUTENTICADA //</p>
+            <h1 class="hero-title">Painel FatecADS</h1>
+            <p class="hero-copy">Seu acesso foi autenticado. A partir daqui voce pode seguir para as rotinas do sistema.</p>
+            <div class="hero-actions">
+                <a class="button-primary" href="/usuarios/criar">Novo Usuario</a>
+                <a class="button-secondary" href="/fatecads">Ver pagina inicial</a>
+            </div>
+        </section>
+
+        <section class="nav-grid">
+            <a class="feature-card" href="/fatecads">
+                <span class="feature-index">01</span>
+                <strong>Inicio</strong>
+                <span>Volte para a pagina principal do sistema.</span>
+            </a>
+
+            <a class="feature-card" href="/usuarios/criar">
+                <span class="feature-index">02</span>
+                <strong>Usuarios</strong>
+                <span>Cadastre contas com perfil de usuario ou administrador.</span>
+            </a>
+        </section>
+
+        <section class="nav-grid">
+            <a class="feature-card accent-card" href="/alunos/listar">
+                <span class="feature-index">03</span>
+                <strong>Alunos</strong>
+                <span>Consulte a listagem e siga para os cadastros existentes.</span>
+            </a>
+
+            <form class="feature-card accent-card logout-card" method="post" th:action="@{/logout}">
+                <span class="feature-index">04</span>
+                <strong>Encerrar Sessao</strong>
+                <span>Finalize o acesso autenticado com seguranca.</span>
+                <button class="button-primary logout-button" type="submit">Sair</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

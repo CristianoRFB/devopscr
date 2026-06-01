@@ -9,12 +9,35 @@
 </head>
 <body class="page-shell">
     <main class="page page-home">
+        <nav class="top-nav">
+            <a class="nav-chip nav-chip-active" href="/fatecads">Tela Inicial</a>
+            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
+            <a class="nav-chip" href="/login">Login</a>
+        </nav>
+
         <section class="hero-panel">
             <p class="eyebrow">FATECADS // SISTEMA ACADEMICO</p>
             <h1 class="hero-title">Bem-vindo ao Sistema FatecADS</h1>
             <p class="hero-copy">
-                Gerencie alunos com uma interface direta, escura e objetiva.
+                Gerencie cadastros, acessos e recuperacao de senha com uma interface mais direta, intensa e controlada.
             </p>
+            <div class="hero-actions">
+                <a class="button-primary" href="/login">Entrar</a>
+                <a class="button-secondary" href="/usuarios/criar">Criar Usuario</a>
+                <a class="button-secondary" href="/fatecads/dashboard">Ver dashboard</a>
+            </div>
+            <div class="hero-status-grid">
+                <div class="hero-status-card">
+                    <span class="hero-status-label">Acesso</span>
+                    <strong>Login e sessao</strong>
+                    <span>Entrada por credencial com redirecionamento para a area autenticada.</span>
+                </div>
+                <div class="hero-status-card">
+                    <span class="hero-status-label">Recuperacao</span>
+                    <strong>Email com token</strong>
+                    <span>Fluxo de redefinicao com token temporario e invalido apos uso.</span>
+                </div>
+            </div>
         </section>
 
         <section class="nav-grid">

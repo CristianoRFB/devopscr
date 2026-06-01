@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FatecADS</title>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/pages/index.css">
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+</head>
+
+<body class="page-shell">
+    <main class="page page-dashboard">
+        <nav class="top-nav">
+            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
+            <a class="nav-chip nav-chip-active" href="/fatecads/dashboard">Dashboard</a>
+            <a class="nav-chip" href="/login">Login</a>
+        </nav>
+
+        <section class="hero-panel">
+            <p class="eyebrow">VISAO GERAL //</p>
+            <h1 class="hero-title">Dashboard FatecADS</h1>
+            <p class="hero-copy">Uma leitura rapida do sistema para navegar entre os cadastros, acessos e dados principais.</p>
+            <div class="hero-actions">
+                <a class="button-primary" href="/home">Area autenticada</a>
+                <a class="button-secondary" href="/fatecads">Voltar para a tela inicial</a>
+            </div>
+        </section>
+
+        <section class="stats-grid">
+            <article class="stat-card">
+                <span class="stat-label">Usuarios</span>
+                <strong th:text="${totalUsuarios}">0</strong>
+                <span>Contas registradas no banco.</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Alunos</span>
+                <strong th:text="${totalAlunos}">0</strong>
+                <span>Registros academicos cadastrados.</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Cursos</span>
+                <strong th:text="${totalCursos}">0</strong>
+                <span>Estruturas de curso disponiveis.</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Disciplinas</span>
+                <strong th:text="${totalDisciplinas}">0</strong>
+                <span>Materias configuradas no sistema.</span>
+            </article>
+            <article class="stat-card">
+                <span class="stat-label">Professores</span>
+                <strong th:text="${totalProfessores}">0</strong>
+                <span>Corpo docente cadastrado.</span>
+            </article>
+        </section>
+
+        <section class="dashboard-bands">
+            <a class="feature-card" href="/usuarios/criar">
+                <span class="feature-index">01</span>
+                <strong>Usuarios</strong>
+                <span>Crie acessos com perfil de usuario ou administrador.</span>
+            </a>
+            <a class="feature-card accent-card" href="/forgot-password">
+                <span class="feature-index">02</span>
+                <strong>Recuperacao</strong>
+                <span>Entre no fluxo de email e redefinicao de senha.</span>
+            </a>
+            <a class="feature-card" href="/alunos/listar">
+                <span class="feature-index">03</span>
+                <strong>Cadastros</strong>
+                <span>Acesse alunos, cursos, disciplinas e professores.</span>
+            </a>
+        </section>
+    </main>
+</body>
+
+</html>

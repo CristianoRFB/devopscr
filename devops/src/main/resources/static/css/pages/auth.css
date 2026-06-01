@@ -1,0 +1,79 @@
+.page-auth {
+    display: grid;
+    gap: 28px;
+    max-width: 720px;
+}
+
+.auth-panel {
+    display: grid;
+    gap: 20px;
+}
+
+.auth-kicker {
+    display: grid;
+    gap: 8px;
+    padding: 16px 18px;
+    border: 2px solid rgba(243, 216, 216, 0.75);
+    background:
+        linear-gradient(135deg, rgba(193, 18, 31, 0.16), rgba(0, 0, 0, 0.2)),
+        var(--panel-alt);
+}
+
+.auth-kicker-label {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    color: #ff9b9b;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.auth-kicker-copy {
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.auth-grid {
+    grid-template-columns: 1fr;
+}
+
+.auth-form {
+    display: grid;
+    gap: 18px;
+}
+
+.alert {
+    padding: 14px 16px;
+    border: 3px solid var(--line);
+    font-weight: 600;
+}
+
+.success-alert {
+    background: rgba(193, 18, 31, 0.18);
+    color: var(--ink);
+}
+
+.error-alert {
+    background: rgba(120, 0, 0, 0.24);
+    color: var(--ink);
+}
+
+.password-hint {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.logout-card {
+    align-content: start;
+}
+
+.logout-button {
+    margin-top: auto;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .auth-kicker {
+        padding: 14px 16px;
+    }
+}

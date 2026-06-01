@@ -11,6 +11,12 @@
 
 <body class="page-shell">
     <main class="page page-form">
+        <nav class="top-nav">
+            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
+            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
+            <a class="nav-chip nav-chip-active" href="/usuarios/criar">Usuarios</a>
+        </nav>
+
         <section class="section-header">
             <p class="eyebrow">CADASTRO //</p>
             <h1>Cadastrar Usuário</h1>
@@ -42,13 +48,17 @@
 
                 <label class="field field-full" for="roleUsuario">
                     <span>Perfil</span>
-                    <input type="text" id="roleUsuario" th:field="*{role}" placeholder="ADMIN ou USUARIO" required>
+                    <select id="roleUsuario" th:field="*{role}" required>
+                        <option value="ROLE_USER">Usuario</option>
+                        <option value="ROLE_ADMIN">Administrador</option>
+                    </select>
                 </label>
             </div>
 
             <div class="actions-row">
                 <button class="button-primary" type="submit">Cadastrar</button>
-                <a class="button-secondary" href="/fatecads">Voltar para o início</a>
+                <a class="button-secondary" href="/fatecads">Voltar para a tela inicial</a>
+                <a class="button-secondary" href="/fatecads/dashboard">Ir para o dashboard</a>
             </div>
         </form>
     </main>

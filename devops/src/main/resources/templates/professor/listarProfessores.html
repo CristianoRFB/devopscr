@@ -9,13 +9,22 @@
 </head>
 <body class="page-shell">
     <main class="page page-list">
+        <nav class="top-nav">
+            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
+            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
+            <a class="nav-chip nav-chip-active" href="/professores/listar">Professores</a>
+        </nav>
+
         <section class="section-header section-header-split">
             <div>
                 <p class="eyebrow">PAINEL //</p>
                 <h1>Lista de Professores</h1>
                 <p class="section-copy">Visualize, edite e remova registros existentes sem alterar o fluxo do sistema.</p>
             </div>
-            <a class="button-primary" href="/professores/criar">Criar novo Professor</a>
+            <div class="header-actions">
+                <a class="button-secondary" href="/fatecads">Voltar para a tela inicial</a>
+                <a class="button-primary" href="/professores/criar">Criar novo Professor</a>
+            </div>
         </section>
 
         <section class="table-panel">

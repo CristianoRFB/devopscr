@@ -1,13 +1,13 @@
 :root {
-    --bg: #080808;
-    --panel: #121212;
-    --panel-alt: #1b1b1b;
-    --surface: #0f0f0f;
-    --ink: #f5f1e8;
-    --muted: #b6aea1;
-    --line: #f5f1e8;
-    --accent: #ffd400;
-    --accent-strong: #ff5e00;
+    --bg: #050505;
+    --panel: #0f0a0a;
+    --panel-alt: #181010;
+    --surface: #120d0d;
+    --ink: #f8eeee;
+    --muted: #c7a9a9;
+    --line: #f3d8d8;
+    --accent: #c1121f;
+    --accent-strong: #780000;
     --danger: #ff4d6d;
     --shadow: 8px 8px 0 #000000;
     --max-width: 1200px;
@@ -27,12 +27,12 @@ body {
     margin: 0;
     min-height: 100vh;
     background:
-        linear-gradient(135deg, rgba(255, 212, 0, 0.12), transparent 30%),
-        linear-gradient(315deg, rgba(255, 94, 0, 0.14), transparent 25%),
+        radial-gradient(circle at top left, rgba(193, 18, 31, 0.24), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(120, 0, 0, 0.22), transparent 26%),
         repeating-linear-gradient(
             0deg,
-            rgba(245, 241, 232, 0.04) 0,
-            rgba(245, 241, 232, 0.04) 1px,
+            rgba(243, 216, 216, 0.04) 0,
+            rgba(243, 216, 216, 0.04) 1px,
             transparent 1px,
             transparent 36px
         ),
@@ -61,6 +61,41 @@ section {
     margin: 0 auto;
 }
 
+.top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nav-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border: 2px solid var(--line);
+    background: rgba(15, 10, 10, 0.88);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0 #000;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-chip:hover,
+.nav-chip:focus-visible,
+.nav-chip-active {
+    transform: translate(-2px, -2px);
+    border-color: #ffb3b3;
+    box-shadow: 8px 8px 0 #000;
+}
+
+.nav-chip-active {
+    background: linear-gradient(135deg, rgba(193, 18, 31, 0.95), rgba(120, 0, 0, 0.92));
+}
+
 .eyebrow {
     margin: 0 0 16px;
     color: var(--accent);
@@ -77,6 +112,20 @@ section {
 .feature-card {
     border: 3px solid var(--line);
     box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header::before,
+.hero-panel::before,
+.table-panel::before,
+.brutal-form::before,
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent), #ff7b7b, var(--accent-strong));
 }
 
 .section-header,
@@ -89,6 +138,9 @@ section {
 .section-header,
 .hero-panel {
     padding: 28px;
+    background:
+        linear-gradient(180deg, rgba(193, 18, 31, 0.14), transparent 140px),
+        var(--panel);
 }
 
 .section-header h1,
@@ -127,7 +179,7 @@ section {
 .button-primary,
 .table-action {
     background: var(--accent);
-    color: #000;
+    color: #fff5f5;
     box-shadow: 6px 6px 0 #000;
 }
 
@@ -155,11 +207,17 @@ input, select {
     background: var(--surface);
     color: var(--ink);
     outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
 input:focus {
     border-color: var(--accent);
-    box-shadow: inset 0 0 0 2px #000;
+    box-shadow: inset 0 0 0 2px rgba(193, 18, 31, 0.35);
+}
+
+select:focus {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 2px rgba(193, 18, 31, 0.35);
 }
 
 table {
@@ -177,7 +235,7 @@ td {
 
 th {
     background: var(--accent);
-    color: #000;
+    color: #fff5f5;
     font-family: var(--font-display);
     text-transform: uppercase;
 }
@@ -187,7 +245,7 @@ td {
 }
 
 tbody tr:nth-child(even) td {
-    background: #151515;
+    background: #120c0c;
 }
 
 @media (max-width: 768px) {
@@ -211,5 +269,10 @@ tbody tr:nth-child(even) td {
     td {
         padding: 12px;
         font-size: 0.92rem;
+    }
+
+    .top-nav {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 }
