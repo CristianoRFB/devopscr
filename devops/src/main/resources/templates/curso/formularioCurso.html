@@ -1,55 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Cursos</title>
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/pages/formulario-aluno.css">
+    <title>Formulário Curso</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">📚 Sistema DevOps</div>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/aluno/listar">Alunos</a></li>
+                <li><a href="/curso/listar">Cursos</a></li>
+                <li><a href="/professor/listar">Professores</a></li>
+                <li><a href="/disciplina/listar">Disciplinas</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<body class="page-shell">
-    <main class="page page-form">
-        <nav class="top-nav">
-            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
-            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
-            <a class="nav-chip nav-chip-active" href="/cursos/listar">Cursos</a>
-        </nav>
+    <div class="page-header">
+        <h1 th:if="${curso.idCurso == null}">Novo Curso</h1>
+        <h1 th:unless="${curso.idCurso == null}">Editar Curso</h1>
+        <p>Preencha os dados do curso</p>
+    </div>
 
-        <section class="section-header">
-            <p class="eyebrow">CADASTRO //</p>
-            <h1>Cadastrar Cursos</h1>
-            <p class="section-copy">Preencha os dados abaixo para inserir um novo curso no sistema.</p>
-        </section>
+    <div class="container">
+        <div class="form-container">
+            <form th:if="${curso.idCurso == null}" th:action="@{/curso/salvar}" method="post">
+                <h2 class="form-title">Cadastro de Curso</h2>
 
-        <form class="brutal-form" method="post" th:action="@{/cursos/salvar}" th:object="${curso}">
-            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-            <div class="form-grid">
-                <input type="hidden" th:field="*{idCurso}">
-                <label class="field" for="nome">
-                    <span>Nome</span>
-                    <input type="text" id="nome" th:field="*{nome}" required>
-                </label>
+                <div class="form-group">
+                    <label for="nomeCurso">Nome do Curso:</label>
+                    <input type="text" id="nomeCurso" name="nomeCurso" th:value="${curso.nomeCurso}" placeholder="Digite o nome do curso" required>
+                </div>
 
-                <label class="field" for="periodo">
-                    <span>Periodo</span>
-                    <input type="text" id="periodo" th:field="*{periodo}" required>
-                </label>
+                <div class="form-group">
+                    <label for="periodoCurso">Período:</label>
+                    <input type="text" id="periodoCurso" name="periodoCurso" th:value="${curso.periodoCurso}" placeholder="Ex: Noturno, Matutino" required>
+                </div>
 
-                <label class="field field-full" for="cargaHoraria">
-                    <span>Carga Horaria</span>
-                    <input type="number" id="cargaHoraria" th:field="*{cargaHoraria}" required>
-                </label>
-            </div>
+                <div class="form-group">
+                    <label for="cargahorariaCurso">Carga Horária Total:</label>
+                    <input type="text" id="cargahorariaCurso" name="cargahorariaCurso" th:value="${curso.cargahorariaCurso}" placeholder="0000" data-mask="number" required>
+                </div>
 
-            <div class="actions-row">
-                <button class="button-primary" type="submit">Cadastrar</button>
-                <a class="button-secondary" href="/fatecads">Voltar para a tela inicial</a>
-                <a class="button-secondary" href="/cursos/listar">Voltar para a lista</a>
-            </div>
-        </form>
-    </main>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">💾 Salvar</button>
+                    <a href="/curso/listar" class="btn btn-secondary">❌ Cancelar</a>
+                </div>
+            </form>
+
+            <form th:unless="${curso.idCurso == null}" th:action="@{/curso/atualizar/{id}(id=${curso.idCurso})}" method="post">
+                <h2 class="form-title">Editar Curso</h2>
+
+                <input type="hidden" name="idCurso" th:value="${curso.idCurso}">
+
+                <div class="form-group">
+                    <label for="nomeCurso">Nome do Curso:</label>
+                    <input type="text" id="nomeCurso" name="nomeCurso" th:value="${curso.nomeCurso}" placeholder="Digite o nome do curso" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="periodoCurso">Período:</label>
+                    <input type="text" id="periodoCurso" name="periodoCurso" th:value="${curso.periodoCurso}" placeholder="Ex: Noturno, Matutino" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cargahorariaCurso">Carga Horária Total:</label>
+                    <input type="text" id="cargahorariaCurso" name="cargahorariaCurso" th:value="${curso.cargahorariaCurso}" placeholder="0000" data-mask="number" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">💾 Atualizar</button>
+                    <a href="/curso/listar" class="btn btn-secondary">❌ Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/mask.js"></script>
 </body>
-
 </html>

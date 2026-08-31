@@ -3,61 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Disciplinas</title>
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/pages/listar-alunos.css">
+    <title>Listar Disciplinas</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body class="page-shell">
-    <main class="page page-list">
-        <nav class="top-nav">
-            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
-            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
-            <a class="nav-chip nav-chip-active" href="/disciplinas/listar">Disciplinas</a>
-        </nav>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Sistema DevOps</div>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/aluno/listar">Alunos</a></li>
+                <li><a href="/curso/listar">Cursos</a></li>
+                <li><a href="/professor/listar">Professores</a></li>
+                <li><a href="/disciplina/listar">Disciplinas</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <section class="section-header section-header-split">
-            <div>
-                <p class="eyebrow">PAINEL //</p>
-                <h1>Lista de Disciplinas</h1>
-                <p class="section-copy">Visualize, edite e remova registros existentes sem alterar o fluxo do sistema.</p>
-            </div>
-            <div class="header-actions">
-                <a class="button-secondary" href="/fatecads">Voltar para a tela inicial</a>
-                <a class="button-primary" href="/disciplinas/criar">Criar nova Disciplina</a>
-            </div>
-        </section>
+    <div class="page-header">
+        <h1>Disciplinas</h1>
+        <p>Gerencie as disciplinas oferecidas pelos cursos</p>
+    </div>
 
-        <section class="table-panel">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Sigla</th>
-                        <th>Carga Horaria</th>
+    <div class="container">
+        <div class="alerta" th:if="${mensagem}">
+            <p th:text="${mensagem}"></p>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <h2>Lista de Disciplinas</h2>
+                <a href="/disciplina/formulario" class="btn btn-primary">➕ Nova Disciplina</a>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Sigla</th>
+                            <th>Carga Horária</th>
                         <th>Professor</th>
-                        <th>Curso</th>
-                        <th>Acoes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="disciplina : ${disciplinas}">
-                        <td th:text="${disciplina.idDisciplina}"></td>
-                        <td th:text="${disciplina.nome}"></td>
-                        <td th:text="${disciplina.sigla}"></td>
-                        <td th:text="${disciplina.cargaHoraria}"></td>
-                        <td th:text="${disciplina.professor != null ? disciplina.professor.nome : '-'}"></td>
-                        <td th:text="${disciplina.curso != null ? disciplina.curso.nome : '-'}"></td>
-                        <td>
-                            <div class="table-actions">
-                                <a class="table-action" th:href="@{/disciplinas/editar/{id}(id=${disciplina.idDisciplina})}">Editar</a>
-                                <a class="table-action danger" th:href="@{/disciplinas/excluir/{id}(id=${disciplina.idDisciplina})}" onclick="return confirm('Tem certeza que deseja excluir esta disciplina?');">Excluir</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+                            <th>ID Curso</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="disciplina : ${disciplinas}">
+                            <td th:text="${disciplina.idDisciplina}"></td>
+                            <td th:text="${disciplina.nomeDisciplina}"></td>
+                            <td th:text="${disciplina.siglaDisciplina}"></td>
+                            <td th:text="${disciplina.cargaHorariaDisciplina} + 'h'"></td>
+                            <td th:text="${disciplina.professor.nomeProfessor}"></td>
+                            <td th:text="${disciplina.idCurso}"></td>
+                            <td>
+                                <div class="acoes">
+                                    <a th:href="@{/disciplina/editar/{id}(id=${disciplina.idDisciplina})}" class="btn btn-small btn-info">✏️ Editar</a>
+                                    <a th:href="@{/disciplina/deletar/{id}(id=${disciplina.idDisciplina})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">🗑️ Deletar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
 </body>
 </html>

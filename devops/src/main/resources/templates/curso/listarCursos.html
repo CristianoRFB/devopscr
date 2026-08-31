@@ -3,57 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Cursos</title>
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/pages/listar-alunos.css">
+    <title>Listar Cursos</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body class="page-shell">
-    <main class="page page-list">
-        <nav class="top-nav">
-            <a class="nav-chip" href="/fatecads">Tela Inicial</a>
-            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
-            <a class="nav-chip nav-chip-active" href="/cursos/listar">Cursos</a>
-        </nav>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">📚 Sistema DevOps</div>
+            <ul class="nav-links">
+                <li><a href="/">Início</a></li>
+                <li><a href="/aluno/listar">Alunos</a></li>
+                <li><a href="/curso/listar">Cursos</a></li>
+                <li><a href="/professor/listar">Professores</a></li>
+                <li><a href="/disciplina/listar">Disciplinas</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <section class="section-header section-header-split">
-            <div>
-                <p class="eyebrow">PAINEL //</p>
-                <h1>Lista de Cursos</h1>
-                <p class="section-copy">Visualize, edite e remova registros existentes sem alterar o fluxo do sistema.</p>
-            </div>
-            <div class="header-actions">
-                <a class="button-secondary" href="/fatecads">Voltar para a tela inicial</a>
-                <a class="button-primary" href="/cursos/criar">Criar novo Curso</a>
-            </div>
-        </section>
+    <div class="page-header">
+        <h1>Cursos</h1>
+        <p>Gerencie os cursos oferecidos pela instituição</p>
+    </div>
 
-        <section class="table-panel">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Periodo</th>
-                        <th>Carga Horaria</th>
-                        <th>Acoes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="curso : ${cursos}">
-                        <td th:text="${curso.idCurso}"></td>
-                        <td th:text="${curso.nome}"></td>
-                        <td th:text="${curso.periodo}"></td>
-                        <td th:text="${curso.cargaHoraria}"></td>
-                        <td>
-                            <div class="table-actions">
-                                <a class="table-action" th:href="@{/cursos/editar/{id}(id=${curso.idCurso})}">Editar</a>
-                                <a class="table-action danger" th:href="@{/cursos/excluir/{id}(id=${curso.idCurso})}" onclick="return confirm('Tem certeza que deseja excluir este curso?');">Excluir</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </main>
+    <div class="container">
+        <div class="alerta" th:if="${mensagem}">
+            <p th:text="${mensagem}"></p>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <h2>Lista de Cursos</h2>
+                <a href="/curso/formulario" class="btn btn-primary">➕ Novo Curso</a>
+            </div>
+
+            <div style="overflow-x: auto;">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Período</th>
+                            <th>Carga Horária</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="curso : ${cursos}">
+                            <td th:text="${curso.idCurso}"></td>
+                            <td th:text="${curso.nomeCurso}"></td>
+                            <td th:text="${curso.periodoCurso}"></td>
+                            <td th:text="${curso.cargahorariaCurso} + 'h'"></td>
+                            <td>
+                                <div class="acoes">
+                                    <a th:href="@{/curso/editar/{id}(id=${curso.idCurso})}" class="btn btn-small btn-info">✏️ Editar</a>
+                                    <a th:href="@{/curso/deletar/{id}(id=${curso.idCurso})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">🗑️ Deletar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="/" class="btn btn-secondary">↩️ Voltar</a>
+        </div>
+    </div>
 </body>
 </html>

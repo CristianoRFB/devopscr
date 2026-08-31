@@ -1,101 +1,22 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema FatecADS</title>
-    <link rel="stylesheet" href="/css/common.css">
-    <link rel="stylesheet" href="/css/pages/index.css">
+    <title>Sistema DevOps - Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-<body class="page-shell">
-    <main class="page page-home">
-        <nav class="top-nav">
-            <a class="nav-chip nav-chip-active" href="/fatecads">Tela Inicial</a>
-            <a class="nav-chip" href="/fatecads/dashboard">Dashboard</a>
-            <a class="nav-chip" href="/login">Login</a>
-        </nav>
-
-        <section class="hero-panel">
-            <p class="eyebrow">FATECADS // SISTEMA ACADEMICO</p>
-            <h1 class="hero-title">Bem-vindo ao Sistema FatecADS</h1>
-            <p class="hero-copy">
-                Gerencie cadastros, acessos e recuperacao de senha com uma interface mais direta, intensa e controlada.
-            </p>
-            <div class="hero-actions">
-                <a class="button-primary" href="/login">Entrar</a>
-                <a class="button-secondary" href="/usuarios/criar">Criar Usuario</a>
-                <a class="button-secondary" href="/fatecads/dashboard">Ver dashboard</a>
-            </div>
-            <div class="hero-status-grid">
-                <div class="hero-status-card">
-                    <span class="hero-status-label">Acesso</span>
-                    <strong>Login e sessao</strong>
-                    <span>Entrada por credencial com redirecionamento para a area autenticada.</span>
-                </div>
-                <div class="hero-status-card">
-                    <span class="hero-status-label">Recuperacao</span>
-                    <strong>Email com token</strong>
-                    <span>Fluxo de redefinicao com token temporario e invalido apos uso.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="nav-grid">
-            <a class="feature-card" href="/alunos/listar">
-                <span class="feature-index">01</span>
-                <strong>Ver Alunos</strong>
-                <span>Consulte os registros cadastrados.</span>
-            </a>
-
-            <a class="feature-card accent-card" href="/alunos/criar">
-                <span class="feature-index">02</span>
-                <strong>Cadastrar Aluno</strong>
-                <span>Abra o formulario para um novo cadastro.</span>
-            </a>
-        </section>
-
-        <section class="nav-grid">
-            <a class="feature-card" href="/cursos/listar">
-                <span class="feature-index">03</span>
-                <strong>Ver Cursos</strong>
-                <span>Consulte os registros cadastrados.</span>
-            </a>
-
-            <a class="feature-card accent-card" href="/cursos/criar">
-                <span class="feature-index">04</span>
-                <strong>Cadastrar Curso</strong>
-                <span>Abra o formulario para um novo cadastro.</span>
-            </a>
-        </section>
-
-         <section class="nav-grid">
-            <a class="feature-card" href="/disciplinas/listar">
-                <span class="feature-index">05</span>
-                <strong>Ver Disciplinas</strong>
-                <span>Consulte os registros cadastrados.</span>
-            </a>
-
-            <a class="feature-card accent-card" href="/disciplinas/criar">
-                <span class="feature-index">06</span>
-                <strong>Cadastrar Disciplina</strong>
-                <span>Abra o formulario para um novo cadastro.</span>
-            </a>
-        </section>
-
-         <section class="nav-grid">
-            <a class="feature-card" href="/professores/listar">
-                <span class="feature-index">07</span>
-                <strong>Ver Professores</strong>
-                <span>Consulte os registros cadastrados.</span>
-            </a>
-
-            <a class="feature-card accent-card" href="/professores/criar">
-                <span class="feature-index">08</span>
-                <strong>Cadastrar Professor</strong>
-                <span>Abra o formulario para um novo cadastro.</span>
-            </a>
-        </section>
-    </main>
+<body>
+    <h1 style="text-align: center;">Bem-vindo ao Sistema DevOps</h1>
+<form action="/login" method="get">
+    <div style="text-align: center; margin-top: 2rem;">
+        <button type="submit" class="btn btn-primary">Acessar Sistema</button>
+    </div>
+</form>
+<form action="/usuario/formulario" method="get">
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit" class="btn btn-secondary">Criar Novo Usuário</button>
+    </div>
+</form>
 </body>
 </html>
-

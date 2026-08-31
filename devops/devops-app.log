@@ -1,0 +1,52 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.0.3)
+
+2026-06-01T15:16:54.734-03:00  INFO 5316 --- [devops] [           main] br.com.devops.devops.DevopsApplication   : Starting DevopsApplication v0.0.1-SNAPSHOT using Java 25.0.1 with PID 5316 (C:\Users\Aluno\Desktop\DevOps\devops\target\devops-0.0.1-SNAPSHOT.jar started by Aluno in C:\Users\Aluno\Desktop\DevOps\devops)
+2026-06-01T15:16:54.739-03:00  INFO 5316 --- [devops] [           main] br.com.devops.devops.DevopsApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-06-01T15:16:55.648-03:00  INFO 5316 --- [devops] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-01T15:16:55.743-03:00  INFO 5316 --- [devops] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 5 JPA repository interfaces.
+2026-06-01T15:16:56.644-03:00  INFO 5316 --- [devops] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-06-01T15:16:56.667-03:00  INFO 5316 --- [devops] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-01T15:16:56.668-03:00  INFO 5316 --- [devops] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-06-01T15:16:56.710-03:00  INFO 5316 --- [devops] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1900 ms
+2026-06-01T15:16:57.002-03:00  INFO 5316 --- [devops] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-01T15:16:57.103-03:00  INFO 5316 --- [devops] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.4.Final
+2026-06-01T15:16:57.737-03:00  INFO 5316 --- [devops] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-01T15:16:57.771-03:00  INFO 5316 --- [devops] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-01T15:16:57.934-03:00  INFO 5316 --- [devops] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:devops_running user=SA
+2026-06-01T15:16:57.936-03:00  INFO 5316 --- [devops] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-01T15:16:58.002-03:00  INFO 5316 --- [devops] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:devops_running]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: DEVOPS_RUNNING/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-01T15:16:58.944-03:00  INFO 5316 --- [devops] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-01T15:16:58.997-03:00  INFO 5316 --- [devops] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-01T15:16:59.071-03:00  INFO 5316 --- [devops] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-01T15:16:59.610-03:00  INFO 5316 --- [devops] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-01T15:16:59.611-03:00  WARN 5316 --- [devops] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-01T15:16:59.845-03:00  INFO 5316 --- [devops] [           main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page template: index
+2026-06-01T15:17:00.235-03:00  INFO 5316 --- [devops] [           main] .w.s.a.s.AnnotationActionEndpointMapping : Supporting [WS-Addressing August 2004, WS-Addressing 1.0]
+2026-06-01T15:17:00.302-03:00  INFO 5316 --- [devops] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-06-01T15:17:00.316-03:00  INFO 5316 --- [devops] [           main] br.com.devops.devops.DevopsApplication   : Started DevopsApplication in 6.062 seconds (process running for 6.668)
+? Usuários padrão criados com sucesso!
+   - admin / admin123 (ADMIN)
+   - joao / joao123 (PROFESSOR)
+   - maria / maria123 (SECRETARIA)
+2026-06-01T15:17:03.295-03:00  INFO 5316 --- [devops] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-01T15:17:03.297-03:00  INFO 5316 --- [devops] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-06-01T15:17:03.298-03:00  INFO 5316 --- [devops] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
