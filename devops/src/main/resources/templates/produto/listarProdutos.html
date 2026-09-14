@@ -44,7 +44,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="produto : ${produtos}">
-                            <td th:text="${produto.idProduto}"></td><td><div class="product-thumb-wrap"><img th:if="${produto.imagem != null}" class="product-thumb" th:src="@{/produto/{id}/imagem(id=${produto.idProduto})}" th:alt="${produto.nomeProduto}"><span th:unless="${produto.imagem != null}" class="product-placeholder">📦</span></div></td>
+                            <td th:text="${produto.idProduto}"></td><td><div class="product-thumb-wrap"><img th:if="${produto.imagem != null}" class="product-thumb" th:src="@{/produto/{id}/imagem(id=${produto.idProduto})}" th:alt="${produto.nomeProduto}"><span th:unless="${produto.imagem != null}" class="product-placeholder">Sem imagem</span></div></td>
                             <td th:text="${produto.nomeProduto}"></td>
                             <td th:text="${produto.descricaoProduto}"></td>
                             <td th:text="${#numbers.formatCurrency(produto.precoProduto)}"></td>

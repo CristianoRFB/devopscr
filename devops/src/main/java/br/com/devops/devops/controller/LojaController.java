@@ -42,8 +42,13 @@ public class LojaController {
     public String carrinho(Model model, HttpSession session) {
         Map<Integer,Integer> c = carrinho(session); Map<Produto,Integer> itens = new LinkedHashMap<>(); BigDecimal total = BigDecimal.ZERO;
         for (var e : c.entrySet()) produtoService.buscarPorId(e.getKey()).ifPresent(p -> { itens.put(p, e.getValue()); });
-        for (var e : itens.entrySet()) total = total.add(e.getKey().getPrecoProduto().multiply(BigDecimal.valueOf(e.getValue())));
-        model.addAttribute("itens", itens); model.addAttribute("total", total); return "loja/carrinho";
+        Map<Integer, BigDecimal> subtotais = new LinkedHashMap<>();
+        for (var e : itens.entrySet()) {
+            BigDecimal subtotal = e.getKey().getPrecoProduto().multiply(BigDecimal.valueOf(e.getValue()));
+            subtotais.put(e.getKey().getIdProduto(), subtotal);
+            total = total.add(subtotal);
+        }
+        model.addAttribute("itens", itens); model.addAttribute("subtotais", subtotais); model.addAttribute("total", total); return "loja/carrinho";
     }
 
     @PostMapping("/carrinho/atualizar/{id}")
