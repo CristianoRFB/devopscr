@@ -21,7 +21,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/usuario")
 public class UsuarioController {
 
-    private static final String[] ROLES = { "ADMIN", "ALUNO", "PROFESSOR", "SECRETARIA", "USER" };
+    private static final String[] ROLES = { "ADMIN", "USER" };
 
     @Autowired
     private UsuarioService usuarioService;

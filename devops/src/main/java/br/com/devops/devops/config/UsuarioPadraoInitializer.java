@@ -19,40 +19,36 @@ public class UsuarioPadraoInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Verifica se o usuário padrão já existe
-        if (usuarioRepository.findAll().isEmpty()) {
-            // Usuário Admin
-            Usuario usuarioAdmin = new Usuario();
-            usuarioAdmin.setNomeUsuario("Administrador");
-            usuarioAdmin.setEmailUsuario("admin@devops.com");
-            usuarioAdmin.setLoginUsuario("admin");
-            usuarioAdmin.setSenhaUsuario(passwordEncoder.encode("admin123"));
-            usuarioAdmin.setRoleUsuario("ADMIN");
-            usuarioRepository.save(usuarioAdmin);
+        criarOuAtualizarUsuarioPadrao("admin", "Administrador", "admin@devops.com", "admin123", "ADMIN");
+        criarOuAtualizarUsuarioPadrao("joao", "Joao Silva", "joao@devops.com", "joao123", "USER");
+        normalizarRolesAntigas();
 
-            // Usuário Professor
-            Usuario usuarioProfessor = new Usuario();
-            usuarioProfessor.setNomeUsuario("João Silva");
-            usuarioProfessor.setEmailUsuario("joao@devops.com");
-            usuarioProfessor.setLoginUsuario("joao");
-            usuarioProfessor.setSenhaUsuario(passwordEncoder.encode("joao123"));
-            usuarioProfessor.setRoleUsuario("PROFESSOR");
-            usuarioRepository.save(usuarioProfessor);
+        System.out.println("Usuarios padrao conferidos:");
+        System.out.println("   - admin / admin123 (ADMIN)");
+        System.out.println("   - joao / joao123 (USER)");
+    }
 
-            // Usuário Secretaria
-            Usuario usuarioSecretaria = new Usuario();
-            usuarioSecretaria.setNomeUsuario("Maria Santos");
-            usuarioSecretaria.setEmailUsuario("maria@devops.com");
-            usuarioSecretaria.setLoginUsuario("maria");
-            usuarioSecretaria.setSenhaUsuario(passwordEncoder.encode("maria123"));
-            usuarioSecretaria.setRoleUsuario("SECRETARIA");
-            usuarioRepository.save(usuarioSecretaria);
+    private void criarOuAtualizarUsuarioPadrao(String login, String nome, String email, String senha, String role) {
+        Usuario usuario = usuarioRepository.findByLoginUsuario(login).orElseGet(Usuario::new);
+        usuario.setNomeUsuario(nome);
+        usuario.setEmailUsuario(email);
+        usuario.setLoginUsuario(login);
+        usuario.setRoleUsuario(role);
 
-            System.out.println("✅ Usuários padrão criados com sucesso!");
-            System.out.println("   - admin / admin123 (ADMIN)");
-            System.out.println("   - joao / joao123 (PROFESSOR)");
-            System.out.println("   - maria / maria123 (SECRETARIA)");
+        if (usuario.getIdUsuario() == null) {
+            usuario.setSenhaUsuario(passwordEncoder.encode(senha));
         }
+
+        usuarioRepository.save(usuario);
+    }
+
+    private void normalizarRolesAntigas() {
+        usuarioRepository.findAll().stream()
+                .filter(usuario -> !"ADMIN".equals(usuario.getRoleUsuario()) && !"USER".equals(usuario.getRoleUsuario()))
+                .forEach(usuario -> {
+                    usuario.setRoleUsuario("USER");
+                    usuarioRepository.save(usuario);
+                });
     }
 }
 

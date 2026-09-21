@@ -32,20 +32,37 @@ public class SecurityConfig {
                                                                 "/login",
                                                                 "/recuperar-senha",
                                                                 "/redefinir-senha",
-                                                                "/home",
                                                                 "/devops/**",
                                                                 "/error",
                                                                 "/css/**",
                                                                 "/js/**",
-                                                                "/images/**")
+                                                                "/images/**",
+                                                                "/produto/*/imagem")
                                                 .permitAll()
+                                                .requestMatchers("/loja/**").hasRole("USER")
+                                                .requestMatchers(
+                                                                "/home",
+                                                                "/aluno/**",
+                                                                "/curso/**",
+                                                                "/disciplina/**",
+                                                                "/professor/**",
+                                                                "/produto/**",
+                                                                "/pedido/**",
+                                                                "/itemPedido/**",
+                                                                "/usuario/**")
+                                                .hasRole("ADMIN")
                                                 .anyRequest().authenticated())
                                 .formLogin(form -> form
                                                 .loginPage("/login")
                                                 .loginProcessingUrl("/login")
                                                 .usernameParameter("username")
                                                 .passwordParameter("password")
-                                                .defaultSuccessUrl("/home", true)
+                                                .successHandler((request, response, authentication) -> {
+                                                        boolean admin = authentication.getAuthorities().stream()
+                                                                        .anyMatch(authority -> "ROLE_ADMIN"
+                                                                                        .equals(authority.getAuthority()));
+                                                        response.sendRedirect(admin ? "/home" : "/loja");
+                                                })
                                                 .failureUrl("/login?error")
                                                 .permitAll())
                                 .logout(logout -> logout

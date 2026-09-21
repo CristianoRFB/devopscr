@@ -9,7 +9,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">📚 Sistema DevOps</div>
+            <div class="logo">Sistema DevOps</div>
             <ul class="nav-links">
                 <li><a href="/">Início</a></li>
                 <li><a href="/aluno/listar">Alunos</a></li>
@@ -30,7 +30,7 @@
             <div class="table-header">
                 <h2>Alunos Cadastrados</h2>
                 <a class="btn btn-primary" th:href="@{/aluno/formulario}">
-                    ➕ Cadastrar Novo Aluno
+                    Cadastrar Novo Aluno
                 </a>
             </div>
 
@@ -69,14 +69,14 @@
                                     <a 
                                         class="btn btn-small btn-info" 
                                         th:href="@{/aluno/editar/{id}(id=${aluno.idAluno})}">
-                                        ✏️ Editar
+                                        Editar
                                     </a>
 
                                     <a 
                                         class="btn btn-small btn-danger"
                                         th:href="@{/aluno/deletar/{id}(id=${aluno.idAluno})}"
                                         onclick="return confirm('Tem certeza que deseja excluir este aluno?');">
-                                        🗑️ Excluir
+                                        Excluir
                                     </a>
                                 </div>
                             </td>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="text-center mt-3">
-            <a href="/" class="btn btn-secondary">↩️ Voltar</a>
+            <a href="/" class="btn btn-secondary">Voltar</a>
         </div>
     </div>
 </body>

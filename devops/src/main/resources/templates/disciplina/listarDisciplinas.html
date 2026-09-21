@@ -33,7 +33,7 @@
         <div class="table-container">
             <div class="table-header">
                 <h2>Lista de Disciplinas</h2>
-                <a href="/disciplina/formulario" class="btn btn-primary">➕ Nova Disciplina</a>
+                <a href="/disciplina/formulario" class="btn btn-primary">Nova Disciplina</a>
             </div>
 
             <div style="overflow-x: auto;">
@@ -59,8 +59,8 @@
                             <td th:text="${disciplina.idCurso}"></td>
                             <td>
                                 <div class="acoes">
-                                    <a th:href="@{/disciplina/editar/{id}(id=${disciplina.idDisciplina})}" class="btn btn-small btn-info">✏️ Editar</a>
-                                    <a th:href="@{/disciplina/deletar/{id}(id=${disciplina.idDisciplina})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">🗑️ Deletar</a>
+                                    <a th:href="@{/disciplina/editar/{id}(id=${disciplina.idDisciplina})}" class="btn btn-small btn-info">Editar</a>
+                                    <a th:href="@{/disciplina/deletar/{id}(id=${disciplina.idDisciplina})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</a>
                                 </div>
                             </td>
                         </tr>

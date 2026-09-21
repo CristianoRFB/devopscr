@@ -33,7 +33,7 @@
         <div class="table-container">
             <div class="table-header">
                 <h2>Lista de Professores</h2>
-                <a href="/professor/formulario" class="btn btn-primary">➕ Novo Professor</a>
+                <a href="/professor/formulario" class="btn btn-primary">Novo Professor</a>
             </div>
 
             <div style="overflow-x: auto;">
@@ -57,8 +57,8 @@
                             <td th:text="${professor.rmProfessor}"></td>
                             <td>
                                 <div class="acoes">
-                                    <a th:href="@{/professor/editar/{id}(id=${professor.idProfessor})}" class="btn btn-small btn-info">✏️ Editar</a>
-                                    <a th:href="@{/professor/deletar/{id}(id=${professor.idProfessor})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">🗑️ Deletar</a>
+                                    <a th:href="@{/professor/editar/{id}(id=${professor.idProfessor})}" class="btn btn-small btn-info">Editar</a>
+                                    <a th:href="@{/professor/deletar/{id}(id=${professor.idProfessor})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</a>
                                 </div>
                             </td>
                         </tr>

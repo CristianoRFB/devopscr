@@ -9,7 +9,7 @@
 <body>
     <nav>
         <div class="nav-container">
-            <div class="logo">📚 Sistema DevOps</div>
+            <div class="logo">Sistema DevOps</div>
             <ul class="nav-links">
                 <li><a href="/">Início</a></li>
                 <li><a href="/aluno/listar">Alunos</a></li>
@@ -33,7 +33,7 @@
         <div class="table-container">
             <div class="table-header">
                 <h2>Lista de Cursos</h2>
-                <a href="/curso/formulario" class="btn btn-primary">➕ Novo Curso</a>
+                <a href="/curso/formulario" class="btn btn-primary">Novo Curso</a>
             </div>
 
             <div style="overflow-x: auto;">
@@ -55,8 +55,8 @@
                             <td th:text="${curso.cargahorariaCurso} + 'h'"></td>
                             <td>
                                 <div class="acoes">
-                                    <a th:href="@{/curso/editar/{id}(id=${curso.idCurso})}" class="btn btn-small btn-info">✏️ Editar</a>
-                                    <a th:href="@{/curso/deletar/{id}(id=${curso.idCurso})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">🗑️ Deletar</a>
+                                    <a th:href="@{/curso/editar/{id}(id=${curso.idCurso})}" class="btn btn-small btn-info">Editar</a>
+                                    <a th:href="@{/curso/deletar/{id}(id=${curso.idCurso})}" class="btn btn-small btn-danger" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</a>
                                 </div>
                             </td>
                         </tr>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="text-center mt-3">
-            <a href="/" class="btn btn-secondary">↩️ Voltar</a>
+            <a href="/" class="btn btn-secondary">Voltar</a>
         </div>
     </div>
 </body>
