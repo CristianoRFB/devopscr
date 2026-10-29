@@ -51,10 +51,7 @@
                             <td th:text="${produto.quantidadeEstoque}"></td>
                             <td>
                                 <div class="acoes"><a class="btn btn-small btn-info"
-                                        th:href="@{/produto/editar/{id}(id=${produto.idProduto})}">Editar</a><a
-                                        class="btn btn-small btn-danger"
-                                        th:href="@{/produto/deletar/{id}(id=${produto.idProduto})}"
-                                        onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</a></div>
+                                        th:href="@{/produto/editar/{id}(id=${produto.idProduto})}">Editar</a><form th:action="@{/produto/deletar/{id}(id=${produto.idProduto})}" method="post" class="inline-form" onsubmit="return confirm('Confirma a exclusão deste registro?')"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"><button class="btn btn-small btn-danger" type="submit">Deletar</button></form></div>
                             </td>
                         </tr>
                         <tr th:if="${#lists.isEmpty(produtos)}">

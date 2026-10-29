@@ -7,18 +7,7 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo"> Sistema DevOps</div>
-            <ul class="nav-links">
-                <li><a href="/">Início</a></li>
-                <li><a href="/aluno/listar">Alunos</a></li>
-                <li><a href="/curso/listar">Cursos</a></li>
-                <li><a href="/professor/listar">Professores</a></li>
-                <li><a href="/disciplina/listar">Disciplinas</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div th:replace="~{fragments/nav :: admin}"></div>
 
     <div class="page-header">
         <h1 th:if="${professor.idProfessor == null}">Novo Professor</h1>
@@ -28,7 +17,7 @@
 
     <div class="container">
         <div class="form-container">
-            <form th:if="${professor.idProfessor == null}" th:action="@{/professor/salvar}" method="post">
+            <form th:if="${professor.idProfessor == null}" th:action="@{/professor/salvar}" method="post"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <h2 class="form-title">Cadastro de Professor</h2>
 
                 <div class="form-group">
@@ -57,7 +46,7 @@
                 </div>
             </form>
 
-            <form th:unless="${professor.idProfessor == null}" th:action="@{/professor/atualizar/{id}(id=${professor.idProfessor})}" method="post">
+            <form th:unless="${professor.idProfessor == null}" th:action="@{/professor/atualizar/{id}(id=${professor.idProfessor})}" method="post"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <h2 class="form-title">Editar Professor</h2>
 
                 <input type="hidden" name="idProfessor" th:value="${professor.idProfessor}">
@@ -90,5 +79,5 @@
         </div>
     </div>
     <script src="/js/mask.js"></script>
-</body>
+<div th:replace="~{fragments/nav :: rodape}"></div></body>
 </html>

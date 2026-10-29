@@ -9,16 +9,7 @@
 </head>
 
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Sistema DevOps</div>
-            <ul class="nav-links">
-                <li><a href="/home">Início</a></li>
-                <li><a href="/produto/listar">Produtos</a></li>
-                <li><a href="/pedido/listar">Pedidos</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div th:replace="~{fragments/nav :: admin}"></div>
     <div class="page-header">
         <h1 th:text="${pedido.idPedido == null ? 'Novo Pedido' : 'Editar Pedido'}"></h1>
         <p>Preencha os dados gerais do pedido</p>
@@ -27,7 +18,7 @@
         <div class="form-container">
             <form
                 th:action="${pedido.idPedido == null} ? @{/pedido/salvar} : @{/pedido/atualizar/{id}(id=${pedido.idPedido})}"
-                method="post">
+                method="post"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <div class="form-group"><label for="alunoId">Aluno:</label><select id="alunoId" name="alunoId" required>
                         <option value="">Selecione um aluno</option>
                         <option th:each="aluno : ${alunos}" th:value="${aluno.idAluno}"
@@ -50,6 +41,6 @@
             </form>
         </div>
     </div>
-</body>
+<div th:replace="~{fragments/nav :: rodape}"></div></body>
 
 </html>

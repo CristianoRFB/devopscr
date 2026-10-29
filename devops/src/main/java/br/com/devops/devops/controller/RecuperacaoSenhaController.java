@@ -67,8 +67,8 @@ public class RecuperacaoSenhaController {
                 return "redirect:/redefinir-senha?token=" + token;
             }
 
-            if (novaSenha.length() < 6) {
-                redirectAttributes.addFlashAttribute("mensagemErro", "A senha deve ter pelo menos 6 caracteres.");
+            if (novaSenha.length() < 8) {
+                redirectAttributes.addFlashAttribute("mensagemErro", "A senha deve ter pelo menos 8 caracteres.");
                 return "redirect:/redefinir-senha?token=" + token;
             }
 

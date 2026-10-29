@@ -1,66 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo | Sistema DevOps</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Sistema DevOps</div>
-            <ul class="nav-links">
-                <li><a href="/devops">Início</a></li>
-                <li><a href="/aluno/listar">Alunos</a></li>
-                <li><a href="/usuario/listar">Usuários</a></li>
-                <li><a href="/curso/listar">Cursos</a></li>
-                <li><a href="/professor/listar">Professores</a></li>
-                <li><a href="/disciplina/listar">Disciplinas</a></li>
-                <li><a href="/produto/listar">Produtos</a></li>
-                <li><a href="/pedido/listar">Pedidos</a></li>
-                <li><a href="/loja">Loja</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="page-header">
-        <h1>Painel Administrativo</h1>
-        <p>Gerencie cadastros, produtos e pedidos da atividade acadêmica</p>
-    </div>
-
-    <div class="container">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; width: 100%;">
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); text-align: center;">
-                <h2 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.5rem;">Alunos</h2>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Gerencie os registros de alunos</p>
-                <a href="/aluno/listar" class="btn btn-primary">Abrir Alunos</a>
-            </div>
-
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); text-align: center;">
-                <h2 style="color: var(--info-color); margin-bottom: 1rem; font-size: 1.5rem;">Cursos</h2>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Gerencie os cursos disponíveis</p>
-                <a href="/curso/listar" class="btn btn-info">Abrir Cursos</a>
-            </div>
-
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); text-align: center;">
-                <h2 style="color: var(--success-color); margin-bottom: 1rem; font-size: 1.5rem;">Professores</h2>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Gerencie os dados dos professores</p>
-                <a href="/professor/listar" class="btn btn-success">Abrir Professores</a>
-            </div>
-
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); text-align: center;">
-                <h2 style="color: var(--warning-color); margin-bottom: 1rem; font-size: 1.5rem;">Disciplinas</h2>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Gerencie as disciplinas oferecidas</p>
-                <a href="/disciplina/listar" class="btn btn-warning" style="background: var(--warning-color);">Abrir Disciplinas</a>
-            </div>
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); text-align: center;"><h2 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.5rem;">Produtos</h2><p style="color: var(--text-light); margin-bottom: 1.5rem;">Gerencie o catálogo e o estoque</p><a href="/produto/listar" class="btn btn-primary">Abrir Produtos</a></div>
-            <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); text-align: center;"><h2 style="color: var(--success-color); margin-bottom: 1rem; font-size: 1.5rem;">Pedidos</h2><p style="color: var(--text-light); margin-bottom: 1.5rem;">Cadastre e acompanhe pedidos</p><a href="/pedido/listar" class="btn btn-success">Abrir Pedidos</a></div>
-        </div>
-
-        <div class="text-center mt-3">
-            <a href="/usuario/listar" class="btn btn-secondary">Ir para Usuários</a>
-        </div>
-    </div>
-</body>
-</html>
+<!DOCTYPE html><html lang="pt-BR" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Painel Administrativo | DevOpsCR</title><link rel="stylesheet" href="/css/styles.css"></head>
+<body><div th:replace="~{fragments/nav :: admin}"></div>
+<header class="page-header"><div class="container"><span class="eyebrow">Área administrativa</span><h1>Painel de gerenciamento</h1><p>Organize cadastros acadêmicos, produtos e pedidos em um só lugar.</p></div></header>
+<main class="container">
+ <section class="module-group" aria-labelledby="academico"><div class="section-heading"><div><span class="eyebrow">Acadêmico</span><h2 id="academico">Gestão acadêmica</h2><p>Alunos, cursos, professores e disciplinas.</p></div></div>
+ <div class="module-grid">
+  <a class="module-card" href="/aluno/listar"><span class="module-tag">01</span><h3>Alunos</h3><p>Cadastros e informações dos estudantes.</p><span class="module-cta">Gerenciar alunos →</span></a>
+  <a class="module-card" href="/curso/listar"><span class="module-tag">02</span><h3>Cursos</h3><p>Lista e dados dos cursos.</p><span class="module-cta">Gerenciar cursos →</span></a>
+  <a class="module-card" href="/professor/listar"><span class="module-tag">03</span><h3>Professores</h3><p>Cadastro e atualização de docentes.</p><span class="module-cta">Gerenciar professores →</span></a>
+  <a class="module-card" href="/disciplina/listar"><span class="module-tag">04</span><h3>Disciplinas</h3><p>Disciplinas e relacionamentos.</p><span class="module-cta">Gerenciar disciplinas →</span></a>
+ </div></section>
+ <section class="module-group" aria-labelledby="comercial"><div class="section-heading"><div><span class="eyebrow">Comercial</span><h2 id="comercial">Gestão da loja</h2><p>Catálogo, estoque, pedidos e usuários.</p></div><a href="/loja" class="btn btn-secondary">Abrir a loja</a></div>
+ <div class="module-grid">
+  <a class="module-card" href="/produto/listar"><span class="module-tag">05</span><h3>Produtos</h3><p>Imagens, preço e estoque.</p><span class="module-cta">Gerenciar produtos →</span></a>
+  <a class="module-card" href="/pedido/listar"><span class="module-tag">06</span><h3>Pedidos</h3><p>Visualizar registros e situação.</p><span class="module-cta">Acompanhar pedidos →</span></a>
+  <a class="module-card" href="/usuario/listar"><span class="module-tag">07</span><h3>Usuários</h3><p>Contas de acesso e permissões.</p><span class="module-cta">Gerenciar usuários →</span></a>
+ </div></section>
+</main><div th:replace="~{fragments/nav :: rodape}"></div></body></html>

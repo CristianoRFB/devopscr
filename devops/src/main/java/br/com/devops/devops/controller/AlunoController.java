@@ -52,7 +52,7 @@ public class AlunoController {
         return "aluno/formularioAluno";
     }
 
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id) {
         alunoService.deleteAluno(id);
         return "redirect:/aluno/listar";

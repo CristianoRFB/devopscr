@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Sistema DevOps</title>
+    <title>Login - DevOpsCR</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body class="auth-page">
     <main class="auth-layout">
         <section class="auth-panel">
             <div class="auth-brand">
-                <span class="auth-badge">Sistema DevOps</span>
+                <span class="auth-badge">DevOpsCR</span>
                 <h1>Acessar sistema</h1>
-                <p>Entre com seu usuario e senha para continuar.</p>
+                <p>Use sua conta para acessar a loja ou o painel administrativo.</p>
             </div>
 
-            <form class="auth-form" th:action="@{/login}" method="post">
+            <form class="auth-form" th:action="@{/login}" method="post"><input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                 <div class="alerta alerta-erro" th:if="${param.error}">
                     Login ou senha invalidos. Tente novamente.
                 </div>
@@ -46,5 +46,5 @@
             </form>
         </section>
     </main>
-</body>
+<div th:replace="~{fragments/nav :: rodape}"></div></body>
 </html>

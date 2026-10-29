@@ -64,7 +64,7 @@ public class PedidoController {
         return "redirect:/pedido/listar";
     }
 
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         pedidoService.deletar(id);
         redirectAttributes.addFlashAttribute("mensagem", "Pedido deletado com sucesso!");
