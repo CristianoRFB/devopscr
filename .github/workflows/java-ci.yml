@@ -59,6 +59,7 @@ jobs:
       - name: Start Spring Boot against H2 (demo data only)
         run: |
           cd devops
+          chmod +x mvnw
           nohup ./mvnw -B spring-boot:run > ../app-screenshots.log 2>&1 &
           echo $! > ../app-screenshots.pid
       - name: Wait for local server
