@@ -39,7 +39,7 @@ public class SecurityConfig {
                                                                 "/images/**",
                                                                 "/produto/*/imagem")
                                                 .permitAll()
-                                                .requestMatchers("/loja/**").hasRole("USER")
+                                                .requestMatchers("/loja/**").hasAnyRole("USER", "ADMIN")
                                                 .requestMatchers(
                                                                 "/home",
                                                                 "/aluno/**",

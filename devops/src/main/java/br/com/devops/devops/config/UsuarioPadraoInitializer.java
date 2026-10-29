@@ -20,7 +20,7 @@ public class UsuarioPadraoInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         criarOuAtualizarUsuarioPadrao("admin", "Administrador", "admin@devops.com", "admin123", "ADMIN");
-        criarOuAtualizarUsuarioPadrao("joao", "Joao Silva", "joao@devops.com", "joao123", "USER");
+        criarOuAtualizarUsuarioPadrao("joao", "Cliente de Demonstração", "cliente@devops.local", "joao123", "USER");
         normalizarRolesAntigas();
 
         System.out.println("Usuarios padrao conferidos:");
