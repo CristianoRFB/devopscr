@@ -55,7 +55,7 @@ public class ProfessorController {
         return "redirect:/professor/listar";
     }
 
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         professorService.deletar(id);
         redirectAttributes.addFlashAttribute("mensagem", "Professor deletado com sucesso!");

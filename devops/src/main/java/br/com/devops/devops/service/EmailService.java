@@ -23,7 +23,7 @@ public class EmailService {
 
         if (remetente.isBlank()) {
             System.err.println("Email nao configurado. Defina MAIL_USERNAME e MAIL_PASSWORD antes de iniciar a aplicacao.");
-            System.out.println("Link de recuperacao gerado para ambiente local: " + linkReset);
+            // Recovery tokens must never be logged.
             return;
         }
 
@@ -44,10 +44,10 @@ public class EmailService {
 
             message.setText(corpo);
             mailSender.send(message);
-            System.out.println("Email de recuperacao enviado com sucesso para: " + email);
+            // Envio concluído.
         } catch (Exception e) {
-            System.err.println("Nao foi possivel enviar o email de recuperacao: " + e.getMessage());
-            System.out.println("Link de recuperacao gerado para ambiente local: " + linkReset);
+            System.err.println("Nao foi possivel enviar email de recuperacao.");
+            // Recovery tokens must never be logged.
         }
     }
 }

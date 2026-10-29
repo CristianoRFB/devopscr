@@ -70,7 +70,7 @@ public class UsuarioController {
         return "redirect:/usuario/listar";
     }
 
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         usuarioService.deletar(id);
         redirectAttributes.addFlashAttribute("mensagem", "Usuário deletado com sucesso!");

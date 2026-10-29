@@ -91,7 +91,7 @@ public class ProdutoController {
     }
 
     //Metodo para excluir um produto por ID
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         produtoService.deletar(id);
         redirectAttributes.addFlashAttribute("mensagem", "Produto deletado com sucesso!");

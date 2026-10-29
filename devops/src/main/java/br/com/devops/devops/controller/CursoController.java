@@ -55,7 +55,7 @@ public class CursoController {
         return "redirect:/curso/listar";
     }
 
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         cursoService.deletar(id);
         redirectAttributes.addFlashAttribute("mensagem", "Curso deletado com sucesso!");

@@ -53,7 +53,7 @@ public class ItemDoPedidoController {
         return "redirect:/item-pedido/listar/" + item.getPedido().getIdPedido();
     }
 
-    @GetMapping("/deletar/{id}/{pedidoId}")
+    @PostMapping("/deletar/{id}/{pedidoId}")
     public String deletar(@PathVariable Integer id, @PathVariable Integer pedidoId,
                           RedirectAttributes redirectAttributes) {
         itemService.deletar(id);

@@ -65,7 +65,7 @@ public class DisciplinaController {
         return "redirect:/disciplina/listar";
     }
 
-    @GetMapping("/deletar/{id}")
+    @PostMapping("/deletar/{id}")
     public String deletar(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         disciplinaService.deletar(id);
         redirectAttributes.addFlashAttribute("mensagem", "Disciplina deletada com sucesso!");

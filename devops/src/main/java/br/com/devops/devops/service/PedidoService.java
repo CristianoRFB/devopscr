@@ -21,6 +21,13 @@ public class PedidoService {
     }
 
     public List<Pedido> listarTodos() { return pedidoRepository.findAll(); }
+    public List<Pedido> listarDoCliente(String login) {
+        return pedidoRepository.findByClienteLoginUsuarioOrderByIdPedidoDesc(login);
+    }
+    public Optional<Pedido> buscarDoCliente(Integer id, String login) {
+        return pedidoRepository.findById(id).filter(p -> p.getCliente() != null
+                && login.equals(p.getCliente().getLoginUsuario()));
+    }
     public Optional<Pedido> buscarPorId(Integer id) { return pedidoRepository.findById(id); }
     public void deletar(Integer id) { pedidoRepository.deleteById(id); }
 

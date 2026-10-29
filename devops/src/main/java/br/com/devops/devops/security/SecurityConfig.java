@@ -24,7 +24,7 @@ public class SecurityConfig {
         @Bean
         public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
                 http
-                                .csrf(csrf -> csrf.disable())
+                                
                                 .authenticationProvider(authenticationProvider())
                                 .authorizeHttpRequests(auth -> auth
                                                 .requestMatchers(
@@ -32,7 +32,7 @@ public class SecurityConfig {
                                                                 "/login",
                                                                 "/recuperar-senha",
                                                                 "/redefinir-senha",
-                                                                "/devops/**",
+                                                                
                                                                 "/error",
                                                                 "/css/**",
                                                                 "/js/**",
@@ -41,6 +41,7 @@ public class SecurityConfig {
                                                 .permitAll()
                                                 .requestMatchers("/loja/**").hasAnyRole("USER", "ADMIN")
                                                 .requestMatchers(
+                                                                "/devops/**",
                                                                 "/home",
                                                                 "/aluno/**",
                                                                 "/curso/**",

@@ -1,54 +1,38 @@
 package br.com.devops.devops.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Component;
-
 import br.com.devops.devops.entity.Usuario;
 import br.com.devops.devops.repository.UsuarioRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 @Component
+@Profile("dev")
 public class UsuarioPadraoInitializer implements CommandLineRunner {
+    private final UsuarioRepository usuarios;
+    private final PasswordEncoder encoder;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
-
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
-    @Override
-    public void run(String... args) throws Exception {
-        criarOuAtualizarUsuarioPadrao("admin", "Administrador", "admin@devops.com", "admin123", "ADMIN");
-        criarOuAtualizarUsuarioPadrao("joao", "Cliente de Demonstração", "cliente@devops.local", "joao123", "USER");
-        normalizarRolesAntigas();
-
-        System.out.println("Usuarios padrao conferidos:");
-        System.out.println("   - admin / admin123 (ADMIN)");
-        System.out.println("   - joao / joao123 (USER)");
+    public UsuarioPadraoInitializer(UsuarioRepository usuarios, PasswordEncoder encoder) {
+        this.usuarios = usuarios;
+        this.encoder = encoder;
     }
 
-    private void criarOuAtualizarUsuarioPadrao(String login, String nome, String email, String senha, String role) {
-        Usuario usuario = usuarioRepository.findByLoginUsuario(login).orElseGet(Usuario::new);
+    @Override
+    public void run(String... args) {
+        criar("DEV_ADMIN_PASSWORD", "admin", "Administrador de Teste", "admin@localhost.invalid", "ADMIN");
+        criar("DEV_USER_PASSWORD", "cliente", "Cliente de Teste", "cliente@localhost.invalid", "USER");
+    }
+
+    private void criar(String variavel, String login, String nome, String email, String role) {
+        String senha = System.getenv(variavel);
+        if (senha == null || senha.length() < 8 || usuarios.findByLoginUsuario(login).isPresent()) return;
+        Usuario usuario = new Usuario();
         usuario.setNomeUsuario(nome);
         usuario.setEmailUsuario(email);
         usuario.setLoginUsuario(login);
         usuario.setRoleUsuario(role);
-
-        if (usuario.getIdUsuario() == null) {
-            usuario.setSenhaUsuario(passwordEncoder.encode(senha));
-        }
-
-        usuarioRepository.save(usuario);
-    }
-
-    private void normalizarRolesAntigas() {
-        usuarioRepository.findAll().stream()
-                .filter(usuario -> !"ADMIN".equals(usuario.getRoleUsuario()) && !"USER".equals(usuario.getRoleUsuario()))
-                .forEach(usuario -> {
-                    usuario.setRoleUsuario("USER");
-                    usuarioRepository.save(usuario);
-                });
+        usuario.setSenhaUsuario(encoder.encode(senha));
+        usuarios.save(usuario);
     }
 }
-

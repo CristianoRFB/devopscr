@@ -31,13 +31,17 @@ public class Pedido {
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal valorTotal;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemDoPedido> itenList= new ArrayList<>();
-
-    @ManyToOne
+@ManyToOne
     @JoinColumn(name = "idALuno")
     private Aluno aluno;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ItemDoPedido> itens;
+    private List<ItemDoPedido> itens = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario_cliente")
+    private Usuario cliente;
+
+    @Column(name = "checkout_token", unique = true, length = 36)
+    private String checkoutToken;
 }
