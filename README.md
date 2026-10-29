@@ -67,7 +67,43 @@ A implementação usa identificador único de tentativa para minimizar pedidos d
 
 ## Capturas do sistema
 
-Capturas reais com dados fictícios devem ser mantidas em [docs/screenshots](docs/screenshots/README.md). **Não há PNGs validados disponíveis neste momento**; nenhuma imagem ilustrativa foi publicada como screenshot verdadeira. Inserir as imagens com Markdown relativo após a execução e a captura real.
+Capturas reais produzidas automaticamente com Spring Boot e H2 em uma execução de teste, utilizando contas e produtos fictícios.
+
+### Login e autenticação
+
+![Screenshot real: Login e autenticação](docs/screenshots/login.png)
+
+### Painel administrativo
+
+![Screenshot real: Painel administrativo](docs/screenshots/painel-admin.png)
+
+### Gestão acadêmica
+
+![Screenshot real: Gestão acadêmica](docs/screenshots/gestao-academica.png)
+
+### Cadastro de produtos
+
+![Screenshot real: Cadastro de produtos](docs/screenshots/produtos-admin.png)
+
+### Catálogo da loja
+
+![Screenshot real: Catálogo da loja](docs/screenshots/loja.png)
+
+### Detalhes de produto
+
+![Screenshot real: Detalhes de produto](docs/screenshots/detalhe-produto.png)
+
+### Carrinho de compras
+
+![Screenshot real: Carrinho de compras](docs/screenshots/carrinho.png)
+
+### Confirmação de pedido
+
+![Screenshot real: Confirmação de pedido](docs/screenshots/checkout-confirmacao.png)
+
+### Histórico de pedidos
+
+![Screenshot real: Histórico de pedidos](docs/screenshots/meus-pedidos.png)
 
 ## Como executar no computador
 
