@@ -5,6 +5,7 @@ on:
     branches: [main, "feat/**"]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -29,7 +30,7 @@ jobs:
 
   screenshots:
     needs: build-and-test
-    if: github.ref == 'refs/heads/feat/devopscr-checkout-wip-20261029' && github.event_name == 'push'
+    if: github.event_name == 'workflow_dispatch' || (github.ref == 'refs/heads/feat/devopscr-checkout-wip-20261029' && github.event_name == 'push')
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -50,8 +51,12 @@ jobs:
           echo "DB_URL=jdbc:h2:mem:devops_screens;MODE=PostgreSQL;DB_CLOSE_DELAY=-1" >> "$GITHUB_ENV"
           echo "DB_USERNAME=sa" >> "$GITHUB_ENV"
           echo "DB_PASSWORD=" >> "$GITHUB_ENV"
-          echo "DEV_ADMIN_PASSWORD=$(openssl rand -hex 18)" >> "$GITHUB_ENV"
-          echo "DEV_USER_PASSWORD=$(openssl rand -hex 18)" >> "$GITHUB_ENV"
+          ADMIN_PASS="$(openssl rand -hex 18)"
+          USER_PASS="$(openssl rand -hex 18)"
+          echo "::add-mask::$ADMIN_PASS"
+          echo "::add-mask::$USER_PASS"
+          echo "DEV_ADMIN_PASSWORD=$ADMIN_PASS" >> "$GITHUB_ENV"
+          echo "DEV_USER_PASSWORD=$USER_PASS" >> "$GITHUB_ENV"
       - name: Install test browser
         run: |
           npm install --no-save playwright@1.56.1
@@ -80,6 +85,7 @@ jobs:
           path: docs/screenshots/*.png
           if-no-files-found: ignore
       - name: Commit verified captures and README gallery
+        if: github.ref == 'refs/heads/feat/devopscr-checkout-wip-20261029' && github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
